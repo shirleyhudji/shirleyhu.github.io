@@ -1,8 +1,8 @@
 ---
-title: Hello World
+title: Hexo博客搭建
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
-
+使用[Hexo](https://hexo.io/)搭建静态博客.
+参考文档：[documentation](https://hexo.io/docs/)
 ## Quick Start
 
 ### Create a new post
