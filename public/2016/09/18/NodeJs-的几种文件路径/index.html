@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>NodeJs 的几种文件路径  | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="先看一个简单的栗子： 假如我们有这样的文件结构： app/  -lib/    -common.js  -model    -task.js    -test.js 在 task.js 里编写如下的代码： var path = require(‘path’); console.log(dirname);console.log(filename);console.log(process.cwd())">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJs 的几种文件路径 ">
+<meta property="og:url" content="https://shirleyhudji.github.io/2016/09/18/NodeJs-的几种文件路径/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="先看一个简单的栗子： 假如我们有这样的文件结构： app/  -lib/    -common.js  -model    -task.js    -test.js 在 task.js 里编写如下的代码： var path = require(‘path’); console.log(dirname);console.log(filename);console.log(process.cwd())">
+<meta property="og:updated_time" content="2017-09-12T12:04:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJs 的几种文件路径 ">
+<meta name="twitter:description" content="先看一个简单的栗子： 假如我们有这样的文件结构： app/  -lib/    -common.js  -model    -task.js    -test.js 在 task.js 里编写如下的代码： var path = require(‘path’); console.log(dirname);console.log(filename);console.log(process.cwd())">
+  
+    <link rel="alternative" href="/shirleyhu.github.io/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/shirleyhu.github.io/favicon.png">
+  
+  <link rel="stylesheet" href="/shirleyhu.github.io/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/shirleyhu.github.io">Home</a></li><li><a href="/shirleyhu.github.io/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/shirleyhu.github.io/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhudji.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-NodeJs-的几种文件路径" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2016/09/18/NodeJs-的几种文件路径/" class="article-date">
+  <time datetime="2016-09-18T12:03:54.000Z" itemprop="datePublished">2016-09-18</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      NodeJs 的几种文件路径 
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>先看一个简单的栗子：</p>
+<p>假如我们有这样的文件结构：</p>
+<p>app/<br>  -lib/<br>    -common.js<br>  -model<br>    -task.js<br>    -test.js</p>
+<p>在 task.js 里编写如下的代码：</p>
+<p>var path = require(‘path’);</p>
+<p>console.log(<strong>dirname);<br>console.log(</strong>filename);<br>console.log(process.cwd());<br>console.log(path.resolve(‘./‘));</p>
+<p>在 model 目录下运行 node task.js 得到的输出是：</p>
+<p>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js/task.js<br>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js</p>
+<p>然后在 app 目录下运行 node model/task.js，得到的输出是：</p>
+<p>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js/task.js<br>/Users/guo/Sites/learn/app<br>/Users/guo/Sites/learn/app</p>
+<p>那么，不好意思不是问题来了~T_T,我们可以得出一些肤浅的结论了：</p>
+<p><strong>dirname: 总是返回被执行的 js 所在文件夹的绝对路径
+</strong>filename: 总是返回被执行的 js 的绝对路径<br>process.cwd(): 总是返回运行 node 命令时所在的文件夹的绝对路径<br>./: 跟 process.cwd() 一样、一样、一样的吗？</p>
+<p>只有在 require() 时才使用相对路径(./, ../) 的写法，其他地方一律使用绝对路径，如下：</p>
+<p>// 当前目录下<br>path.dirname(<strong>filename) + ‘/test.js’;<br>// 相邻目录下<br>path.resolve(</strong>dirname, ‘../lib/common.js’);</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/shirleyhu.github.io/2016/11/22/css-垂直居中/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          css 垂直居中
+        
+      </div>
+    </a>
+  
+  
+    <a href="/shirleyhu.github.io/2016/09/09/ES6-Promise/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          ES6 Promise
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhudji.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2017 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/shirleyhu.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/shirleyhu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shirleyhu.github.io/js/script.js"></script>
+  </div>
+</body>
+</html>
