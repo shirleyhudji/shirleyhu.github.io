@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>判断窗口滚动到底部 | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="1234567891011121314151617181920onScroll: function() &amp;#123;  var self = this;  var BOTTOM_OFFSET = 0;  $(window).scroll(function () &amp;#123;    var $currentWindow = $(window);    //当前窗口的高度    var windowH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断窗口滚动到底部">
+<meta property="og:url" content="https://shirleyhudji.github.io/2017/02/27/判断窗口滚动到底部/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="1234567891011121314151617181920onScroll: function() &amp;#123;  var self = this;  var BOTTOM_OFFSET = 0;  $(window).scroll(function () &amp;#123;    var $currentWindow = $(window);    //当前窗口的高度    var windowH">
+<meta property="og:updated_time" content="2017-09-12T11:59:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="判断窗口滚动到底部">
+<meta name="twitter:description" content="1234567891011121314151617181920onScroll: function() &amp;#123;  var self = this;  var BOTTOM_OFFSET = 0;  $(window).scroll(function () &amp;#123;    var $currentWindow = $(window);    //当前窗口的高度    var windowH">
+  
+    <link rel="alternative" href="/shirleyhu.github.io/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/shirleyhu.github.io/favicon.png">
+  
+  <link rel="stylesheet" href="/shirleyhu.github.io/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/shirleyhu.github.io">Home</a></li><li><a href="/shirleyhu.github.io/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/shirleyhu.github.io/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhudji.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-判断窗口滚动到底部" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2017/02/27/判断窗口滚动到底部/" class="article-date">
+  <time datetime="2017-02-27T11:57:58.000Z" itemprop="datePublished">2017-02-27</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      判断窗口滚动到底部
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">onScroll: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> BOTTOM_OFFSET = <span class="number">0</span>;</div><div class="line">  $(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> $currentWindow = $(<span class="built_in">window</span>);</div><div class="line">    <span class="comment">//当前窗口的高度</span></div><div class="line">    <span class="keyword">var</span> windowHeight = $currentWindow.height();</div><div class="line"></div><div class="line">    <span class="comment">//当前滚动条从上往下滚动的距离</span></div><div class="line">    <span class="keyword">var</span> scrollTop = $currentWindow.scrollTop();</div><div class="line"></div><div class="line">    <span class="comment">//当前文档的高度</span></div><div class="line">    <span class="keyword">var</span> docHeight = $(<span class="built_in">document</span>).height();</div><div class="line"></div><div class="line">    <span class="comment">//当 滚动条距底部的距离 + 滚动条滚动的距离 &gt;= 文档的高度 - 窗口的高度</span></div><div class="line">    <span class="keyword">if</span> ((BOTTOM_OFFSET + scrollTop) &gt;= docHeight - windowHeight) &#123;</div><div class="line">      self.loadMore();</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/shirleyhu.github.io/2017/04/06/min-height的百分比/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          min-height的百分比
+        
+      </div>
+    </a>
+  
+  
+    <a href="/shirleyhu.github.io/2017/02/26/jquery事件委托/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          jquery事件委托
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhudji.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2017 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/shirleyhu.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/shirleyhu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shirleyhu.github.io/js/script.js"></script>
+  </div>
+</body>
+</html>
