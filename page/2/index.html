@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="风になる">
+<meta property="og:url" content="https://shirleyhudji.github.io/page/2/index.html">
+<meta property="og:site_name" content="风になる">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="风になる">
+  
+    <link rel="alternative" href="/shirleyhu.github.io/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/shirleyhu.github.io/favicon.png">
+  
+  <link rel="stylesheet" href="/shirleyhu.github.io/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/shirleyhu.github.io">Home</a></li><li><a href="/shirleyhu.github.io/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/shirleyhu.github.io/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhudji.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      
+  
+    <article id="post-css-垂直居中" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2016/11/22/css-垂直居中/" class="article-date">
+  <time datetime="2016-11-22T11:55:54.000Z" itemprop="datePublished">2016-11-22</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/shirleyhu.github.io/2016/11/22/css-垂直居中/">css 垂直居中</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">left</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translate</span>(<span class="selector-tag">-50</span>%, <span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure>
+<h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;</div><div class="line"><span class="selector-tag">align-items</span>: <span class="selector-tag">center</span>;</div><div class="line"><span class="selector-tag">justify-content</span>: <span class="selector-tag">center</span>;</div><div class="line"><span class="selector-tag">flex-direction</span>: <span class="selector-tag">column</span>;</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-NodeJs-的几种文件路径" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2016/09/18/NodeJs-的几种文件路径/" class="article-date">
+  <time datetime="2016-09-18T12:03:54.000Z" itemprop="datePublished">2016-09-18</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/shirleyhu.github.io/2016/09/18/NodeJs-的几种文件路径/">NodeJs 的几种文件路径 </a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>先看一个简单的栗子：</p>
+<p>假如我们有这样的文件结构：</p>
+<p>app/<br>  -lib/<br>    -common.js<br>  -model<br>    -task.js<br>    -test.js</p>
+<p>在 task.js 里编写如下的代码：</p>
+<p>var path = require(‘path’);</p>
+<p>console.log(<strong>dirname);<br>console.log(</strong>filename);<br>console.log(process.cwd());<br>console.log(path.resolve(‘./‘));</p>
+<p>在 model 目录下运行 node task.js 得到的输出是：</p>
+<p>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js/task.js<br>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js</p>
+<p>然后在 app 目录下运行 node model/task.js，得到的输出是：</p>
+<p>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js/task.js<br>/Users/guo/Sites/learn/app<br>/Users/guo/Sites/learn/app</p>
+<p>那么，不好意思不是问题来了~T_T,我们可以得出一些肤浅的结论了：</p>
+<p><strong>dirname: 总是返回被执行的 js 所在文件夹的绝对路径
+</strong>filename: 总是返回被执行的 js 的绝对路径<br>process.cwd(): 总是返回运行 node 命令时所在的文件夹的绝对路径<br>./: 跟 process.cwd() 一样、一样、一样的吗？</p>
+<p>只有在 require() 时才使用相对路径(./, ../) 的写法，其他地方一律使用绝对路径，如下：</p>
+<p>// 当前目录下<br>path.dirname(<strong>filename) + ‘/test.js’;<br>// 相邻目录下<br>path.resolve(</strong>dirname, ‘../lib/common.js’);</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-ES6-Promise" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2016/09/09/ES6-Promise/" class="article-date">
+  <time datetime="2016-09-09T03:48:18.000Z" itemprop="datePublished">2016-09-09</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/shirleyhu.github.io/2016/09/09/ES6-Promise/">ES6 Promise</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p><code>Pending</code>（进行中）、<code>Resolved</code>（已完成，又称Fulfilled）和<code>Rejected</code>（已失败）</p>
+<p>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个Promise实例，表示异步操作的结果有可能是一个值，也有可能是另一个异步操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail'</span>)), <span class="number">3000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(p1), <span class="number">1000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">p2</div><div class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> <span class="built_in">console</span>.log(result))</div><div class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error))</div><div class="line"><span class="comment">// Error: fail</span></div></pre></td></tr></table></figure>
+<h2 id="Promise-prototype-then（）Promise-prototype-catch（）"><a href="#Promise-prototype-then（）Promise-prototype-catch（）" class="headerlink" title="Promise.prototype.then（）Promise.prototype.catch（）"></a>Promise.prototype.then（）Promise.prototype.catch（）</h2><p>Promise实例具有then方法，也就是说，then方法是定义在原型对象Promise.prototype上的。它的作用是为Promise实例添加状态改变时的回调函数。前面说过，then方法的第一个参数是Resolved状态的回调函数，第二个参数（可选）是Rejected状态的回调函数。</p>
+<p>then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">p.then(<span class="function">(<span class="params">val</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"fulfilled:"</span>, val))</div><div class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"rejected:"</span>, err));</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">p.then(<span class="function">(<span class="params">val</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"fulfilled:"</span>, val))</div><div class="line">  .then(<span class="literal">null</span>, (err) =&gt; <span class="built_in">console</span>.log(<span class="string">"rejected:"</span>, err));</div></pre></td></tr></table></figure></p>
+<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h2><h2 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a>Promise.resolve()</h2><p>有时需要将现有对象转为Promise对象，Promise.resolve方法就起到这个作用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(<span class="number">42</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject()"></a>Promise.reject()</h2><p>Promise.reject(reason)方法也会返回一个新的Promise实例，该实例的状态为rejected。它的参数用法与Promise.resolve方法完全一致。</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-Sublime-Text快捷键" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2016/09/05/Sublime-Text快捷键/" class="article-date">
+  <time datetime="2016-09-05T11:54:47.000Z" itemprop="datePublished">2016-09-05</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/shirleyhu.github.io/2016/09/05/Sublime-Text快捷键/">Sublime Text快捷键</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<ul>
+<li><strong>Ctrl+Shift+P</strong>：打开命令面板</li>
+<li><strong>Ctrl+P</strong>：搜索项目中的文件</li>
+<li><strong>Ctrl+G</strong>：跳转到第几行</li>
+<li><strong>Ctrl+W</strong>：关闭当前打开文件</li>
+<li><strong>Ctrl+Shift+W</strong>：关闭所有打开文件</li>
+<li><strong>Ctrl+Shift+V</strong>：粘贴并格式化</li>
+<li><strong>Ctrl+D</strong>：选择单词，重复可增加选择下一个相同的单词</li>
+<li><strong>Ctrl+L</strong>：选择行，重复可依次增加选择下一行</li>
+<li><strong>Ctrl+Shift+L</strong>：选择多行</li>
+<li><strong>Ctrl+Shift+Enter</strong>：在当前行前插入新行</li>
+<li><strong>Ctrl+X</strong>：删除当前行</li>
+<li><strong>Ctrl+M</strong>：跳转到对应括号</li>
+<li><strong>Ctrl+U</strong>：软撤销，撤销光标位置</li>
+<li><strong>Ctrl+J</strong>：选择标签内容</li>
+<li><strong>Ctrl+F</strong>：查找内容</li>
+<li><strong>Ctrl+Shift+F</strong>：查找并替换</li>
+<li><strong>Ctrl+H</strong>：替换</li>
+<li><strong>Ctrl+R</strong>：前往 method</li>
+<li><strong>Ctrl+N</strong>：新建窗口</li>
+<li><strong>Ctrl+K+B</strong>：开关侧栏</li>
+<li><strong>Ctrl+Shift+M</strong>：选中当前括号内容，重复可选着括号本身</li>
+<li><strong>Ctrl+F2</strong>：设置/删除标记</li>
+<li><strong>Ctrl+/</strong>：注释当前行</li>
+<li><strong>Ctrl+Shift+/</strong>：当前位置插入注释</li>
+<li><strong>Ctrl+Alt+/</strong>：块注释，并Focus到首行，写注释说明用的</li>
+<li><strong>Ctrl+Shift+A</strong>：选择当前标签前后，修改标签用的</li>
+<li><strong>F11</strong>：全屏</li>
+<li><strong>Shift+F11</strong>：全屏免打扰模式，只编辑当前文件</li>
+<li><strong>Alt+F3</strong>：选择所有相同的词</li>
+<li><strong>Alt+.</strong>：闭合标签</li>
+<li><strong>Alt+Shift+数字</strong>：分屏显示</li>
+<li><strong>Alt+数字</strong>：切换打开第N个文件</li>
+<li><strong>Shift+右键拖动</strong>：光标多不，用来更改或插入列内容</li>
+<li>鼠标的前进后退键可切换Tab文件</li>
+<li><strong>按Ctrl，依次点击或选取</strong>，可需要编辑的多个位置</li>
+<li><strong>按Ctrl+Shift+上下键</strong>，可替换行</li>
+</ul>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/shirleyhu.github.io/">&laquo; Prev</a><a class="page-number" href="/shirleyhu.github.io/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhudji.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2017 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/shirleyhu.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/shirleyhu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shirleyhu.github.io/js/script.js"></script>
+  </div>
+</body>
+</html>

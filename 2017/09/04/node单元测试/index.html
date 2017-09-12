@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>node单元测试 | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="为什么需要单元测试单元测试的重要就像城市离不开下水道，虽然一般用户感知不到，但一旦没有或不健全，就是灾难，参见天朝的城市…浏览器端 js 的单元测试，因为前端业务的多变性和对dom的依赖，业务代码的单测一直很难展开，而 node 应用不存在这个问题，node 中没有dom，而且变化会比前端少，稳定性诉求更高。node 中单元测试容易展开，且成效好。 node 中的单元测试mocha 是常用的 no">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node单元测试">
+<meta property="og:url" content="https://shirleyhudji.github.io/2017/09/04/node单元测试/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="为什么需要单元测试单元测试的重要就像城市离不开下水道，虽然一般用户感知不到，但一旦没有或不健全，就是灾难，参见天朝的城市…浏览器端 js 的单元测试，因为前端业务的多变性和对dom的依赖，业务代码的单测一直很难展开，而 node 应用不存在这个问题，node 中没有dom，而且变化会比前端少，稳定性诉求更高。node 中单元测试容易展开，且成效好。 node 中的单元测试mocha 是常用的 no">
+<meta property="og:updated_time" content="2017-09-12T11:42:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node单元测试">
+<meta name="twitter:description" content="为什么需要单元测试单元测试的重要就像城市离不开下水道，虽然一般用户感知不到，但一旦没有或不健全，就是灾难，参见天朝的城市…浏览器端 js 的单元测试，因为前端业务的多变性和对dom的依赖，业务代码的单测一直很难展开，而 node 应用不存在这个问题，node 中没有dom，而且变化会比前端少，稳定性诉求更高。node 中单元测试容易展开，且成效好。 node 中的单元测试mocha 是常用的 no">
+  
+    <link rel="alternative" href="/shirleyhu.github.io/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/shirleyhu.github.io/favicon.png">
+  
+  <link rel="stylesheet" href="/shirleyhu.github.io/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/shirleyhu.github.io">Home</a></li><li><a href="/shirleyhu.github.io/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/shirleyhu.github.io/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhudji.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-node单元测试" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2017/09/04/node单元测试/" class="article-date">
+  <time datetime="2017-09-04T06:34:59.000Z" itemprop="datePublished">2017-09-04</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      node单元测试
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="为什么需要单元测试"><a href="#为什么需要单元测试" class="headerlink" title="为什么需要单元测试"></a>为什么需要单元测试</h2><p>单元测试的重要就像城市离不开下水道，虽然一般用户感知不到，但一旦没有或不健全，就是灾难，参见天朝的城市…浏览器端 js 的单元测试，因为前端业务的多变性和对dom的依赖，业务代码的单测一直很难展开，而 node 应用不存在这个问题，node 中没有dom，而且变化会比前端少，稳定性诉求更高。node 中单元测试容易展开，且成效好。</p>
+<h2 id="node-中的单元测试"><a href="#node-中的单元测试" class="headerlink" title="node 中的单元测试"></a>node 中的单元测试</h2><p><a href="https://mochajs.org/" target="_blank" rel="external">mocha</a> 是常用的 node 单元测试框架，使用简单且灵活，是进行 node 单测的首选。</p>
+<p>安装 mocha：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g mocha</div></pre></td></tr></table></figure>
+<p>在 test 目录我们新建一个 demo-spec.js（约定-spec为用例文件） 文件，测试数组的 indexOf() 方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">"assert"</span>);</div><div class="line">describe(<span class="string">'Array'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    describe(<span class="string">'#indexOf()'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        it(<span class="string">'should return -1 when the value is not present'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            assert.equal(<span class="number">-1</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].indexOf(<span class="number">5</span>));</div><div class="line">            assert.equal(<span class="number">-1</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].indexOf(<span class="number">0</span>));</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>assert 模块是 node 内置的断言库。</p>
+<p>describe() 用于定义测试用例组，是可以嵌套的。</p>
+<p>it() 是定义具体的测试用例。</p>
+<p>assert.equal() 用于判断值是否符合预期。</p>
+<p>命令行运行用例 ：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mocha</div></pre></td></tr></table></figure></p>
+<p>默认会运行 test 目录下的所有用例文件，输出的信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Array</div><div class="line"><span class="comment">#indexOf()</span></div><div class="line">  ✓ should <span class="built_in">return</span> -1 when the value is not present</div></pre></td></tr></table></figure></p>
+<h2 id="should断言库"><a href="#should断言库" class="headerlink" title="should断言库"></a>should断言库</h2><p>node 内置的断言库 assert ，功能比较弱，不太好用，推荐使用 should ，详细api可以看 <a href="http://shouldjs.github.io/" target="_blank" rel="external">should.js</a>。</p>
+<p>should 的断言方法注入到 Object.prototype 中，所以断言的风格更符合用户思维习惯，也支持链式调用，跟 jQuery 有点像：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> should = <span class="built_in">require</span>(<span class="string">"should"</span>);</div><div class="line">describe(<span class="string">'Should test'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    it(<span class="string">'number'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        (<span class="number">123</span>).should.be.a.Number;</div><div class="line">    &#125;);</div><div class="line">    it(<span class="string">'object property'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'minghe'</span>,<span class="attr">email</span>:<span class="string">"minghe36@gmail.com"</span>&#125;;</div><div class="line">        obj.should.have.property(<span class="string">'name'</span>,<span class="string">'minghe'</span>);</div><div class="line">        obj.should.have.property(<span class="string">'email'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>(123).should.be.a.Number 判断 123 是否是一个数字，适用于其他类型的判断。</p>
+<p>obj.should.have.property(‘name’,’minghe’) obj 对象是否包含属性 name ，且 name = ‘minghe’ 。<br>更多的 api 请看 文档</p>
+<h2 id="mocha异步测试"><a href="#mocha异步测试" class="headerlink" title="mocha异步测试"></a>mocha异步测试</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">var</span> should = <span class="built_in">require</span>(<span class="string">'should'</span>);</div><div class="line">describe(<span class="string">'fs'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    describe(<span class="string">'#readFile()'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        it(<span class="string">'should not be null'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</div><div class="line">            fs.readFile(<span class="string">'./package.json'</span>, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err,res</span>)</span>&#123;</div><div class="line">                <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</div><div class="line">                res.should.not.equal(<span class="literal">null</span>);</div><div class="line">                done();</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>关键在于 done 实参，必须在执行完异步后（在异步回调中）执行下 done()，就能捕获到用例。</p>
+<p>回调函数 done() 支持接收一个错误：done(err)，用于简化错误处理。</p>
+<h2 id="supertest请求测试"><a href="#supertest请求测试" class="headerlink" title="supertest请求测试"></a>supertest请求测试</h2><p>在 node 业务应用中，我们经常需要测试路由的可用性，如何处理呢？</p>
+<p>可以使用 supertest 模块，supertest 专门用于 http 断言，支持 http 请求测试。</p>
+<p>用例写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> superagent = <span class="built_in">require</span>(<span class="string">'supertest'</span>);</div><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'../app'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> superagent(app.listen());</div><div class="line">&#125;</div><div class="line"></div><div class="line">describe(<span class="string">'Routes'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    describe(<span class="string">'GET /'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        it(<span class="string">'should return 200'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">            request()</div><div class="line">                .get(<span class="string">'/'</span>)</div><div class="line">                .expect(<span class="number">200</span>, done);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>superagent(app.listen()) 会截获 koa 的 http 请求，可以使用 get 、 post 等方法，对请求进行测试。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request()</div><div class="line">    .get(<span class="string">'/'</span>)</div><div class="line">    .expect(<span class="number">200</span>, done);</div></pre></td></tr></table></figure>
+<p>get(‘/‘) 即测试首页 get 请求，.expect(200, done) 测试 请求状态码是否为 200 （请求成功），done 是必须传入的，这样请求测试结束后，才能把测试信息推送给mocha处理。</p>
+<p>上述测试代码等价于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">request()</div><div class="line">    .get(<span class="string">'/'</span>)</div><div class="line">    .expect(<span class="number">200</span>)</div><div class="line">    .end(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) <span class="keyword">return</span> done(err);</div><div class="line">        done();</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>.end() 回调会在请求完成后触发，可以在回调中对错误进行处理，res 包含完整的请求信息，可以对这些信息进行测试，比如页面输出的内容等。</p>
+<p>运行命令 ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mocha --harmony</div></pre></td></tr></table></figure>
+<p>留意：测试 koa 的请求必须加–harmony，否者会抛异常。</p>
+<p>我们经常需要对 json 接口的数据结构合法性进行测试，如何借助 supertest 实现测试呢？</p>
+<p>我们新建个 /api/user/:id 的路由，返回一个用户信息：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">'/api/user/:id'</span>,<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> user = &#123;<span class="attr">name</span>:<span class="string">'minghe'</span>,<span class="attr">email</span>:<span class="string">'minghe36@gmail.com'</span>&#125;;</div><div class="line">    user = <span class="built_in">JSON</span>.stringify(user);</div><div class="line">    <span class="keyword">this</span>.body = user;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>测试此路由是否返回正确的数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">it(<span class="string">'should be json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">done</span>)</span>&#123;</div><div class="line">    request()</div><div class="line">        .get(<span class="string">'/api/user/1'</span>)</div><div class="line">        .expect(<span class="number">200</span>)</div><div class="line">        .end(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span> (err) <span class="keyword">return</span> done(err);</div><div class="line">            <span class="keyword">var</span> text = res.text;</div><div class="line">            <span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(text);</div><div class="line">            json.should.have.property(<span class="string">'email'</span>);</div><div class="line">            json.should.have.property(<span class="string">'minghe'</span>);</div><div class="line">            done();</div><div class="line">        &#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>supertest 很强大，可以设置请求的头信息，使用 set() ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">request()</div><div class="line">    .get(<span class="string">'/'</span>)</div><div class="line">    .set(<span class="string">'Accept'</span>, <span class="string">'application/json'</span>)</div><div class="line">    .expect(<span class="string">'Content-Type'</span>, /json/)</div></pre></td></tr></table></figure>
+<p>而 expect() 除了支持状态码测试外，还支持头信息测试：.expect(‘Content-Type’, /json/) 。</p>
+<h2 id="测试覆盖率"><a href="#测试覆盖率" class="headerlink" title="测试覆盖率"></a>测试覆盖率</h2><p>我们写了测试用例，但如何知道用例的覆盖率呢？</p>
+<p>可以使用 istanbul 实现单元测试覆盖率报告，istanbul 功能非常强大，支持与 mocha 的结合。</p>
+<p>在应用工程中执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev istanbul</div></pre></td></tr></table></figure>
+<p>命令比较长，我们将其写入到 package.json 的 script 方便调用：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"scripts": &#123;</div><div class="line">    "test": "NODE_ENV=local node --harmony node_modules/.bin/istanbul cover --report html ./node_modules/mocha/bin/_mocha -- 'test/**/*-spec.js'"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>NODE_ENV=local node –harmony ：以本地环境、es6支持启动 node 应用；</li>
+<li>node_modules/.bin/istanbul cover –report html ：调用 istanbul 程序执行 cover 命令（执行覆盖率计算），–report html 生成的报告以 html 的形式；</li>
+<li>./node_modules/mocha/bin/_mocha – ‘test/*/-spec.js’ ：关联 mocha 测试驱动程序，执行 tes 目录下 所有的后缀是 -spec.js 的用例文件。</li>
+</ul>
+<p>运行 npm test ，如果一切正常，将会在工程目录中生成 coverage 目录，可以打开 coverage/index.html 查看覆盖率报告。</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shirleyhu.github.io/tags/node/">node</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+  
+    <a href="/shirleyhu.github.io/2017/07/26/设置微信自定义分享内容/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          设置微信自定义分享内容
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhudji.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2017 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/shirleyhu.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/shirleyhu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shirleyhu.github.io/js/script.js"></script>
+  </div>
+</body>
+</html>

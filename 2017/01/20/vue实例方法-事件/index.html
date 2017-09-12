@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue实例方法 / 事件 | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="vm.$on( event, callback )参数： {String} event{Function} callback用法： 监听当前实例上的自定义事件。事件可以由 vm.$emit, vm.$dispatch 或 vm.$broadcast触发。传入这些方法的附加参数都会传入这个方法的回调。 示例： vm.$on(‘test’, function (msg) {  console.log(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue实例方法 &#x2F; 事件">
+<meta property="og:url" content="https://shirleyhudji.github.io/2017/01/20/vue实例方法-事件/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="vm.$on( event, callback )参数： {String} event{Function} callback用法： 监听当前实例上的自定义事件。事件可以由 vm.$emit, vm.$dispatch 或 vm.$broadcast触发。传入这些方法的附加参数都会传入这个方法的回调。 示例： vm.$on(‘test’, function (msg) {  console.log(">
+<meta property="og:updated_time" content="2017-09-12T12:01:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue实例方法 &#x2F; 事件">
+<meta name="twitter:description" content="vm.$on( event, callback )参数： {String} event{Function} callback用法： 监听当前实例上的自定义事件。事件可以由 vm.$emit, vm.$dispatch 或 vm.$broadcast触发。传入这些方法的附加参数都会传入这个方法的回调。 示例： vm.$on(‘test’, function (msg) {  console.log(">
+  
+    <link rel="alternative" href="/shirleyhu.github.io/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/shirleyhu.github.io/favicon.png">
+  
+  <link rel="stylesheet" href="/shirleyhu.github.io/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/shirleyhu.github.io">Home</a></li><li><a href="/shirleyhu.github.io/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/shirleyhu.github.io/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhudji.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-vue实例方法-事件" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2017/01/20/vue实例方法-事件/" class="article-date">
+  <time datetime="2017-01-20T12:01:00.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      vue实例方法 / 事件
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="vm-on-event-callback"><a href="#vm-on-event-callback" class="headerlink" title="vm.$on( event, callback )"></a>vm.$on( event, callback )</h2><p>参数：</p>
+<p>{String} event<br>{Function} callback<br>用法：</p>
+<p>监听当前实例上的自定义事件。事件可以由 vm.$emit, vm.$dispatch 或 vm.$broadcast触发。传入这些方法的附加参数都会传入这个方法的回调。</p>
+<p>示例：</p>
+<p>vm.$on(‘test’, function (msg) {<br>  console.log(msg)<br>})<br>vm.$emit(‘test’, ‘hi’)<br>// -&gt; “hi”</p>
+<h2 id="vm-emit-event-…args"><a href="#vm-emit-event-…args" class="headerlink" title="vm.$emit( event, […args] )"></a>vm.$emit( event, […args] )</h2><p>参数：</p>
+<p>{String} event<br>[…args]<br>触发当前实例上的事件。附加参数都会传给监听器回调。</p>
+<h2 id="vm-dispatch-event-…args"><a href="#vm-dispatch-event-…args" class="headerlink" title="vm.$dispatch( event, […args] )"></a>vm.$dispatch( event, […args] )</h2><p>参数：</p>
+<p>{String} event<br>[…args]<br>用法：</p>
+<p>派发事件，首先在实例上触发它，然后沿着父链向上冒泡在触发一个监听器后停止，除非它返回 true。附加参数都会传给监听器回调。</p>
+<h2 id="vm-broadcast-event-…args"><a href="#vm-broadcast-event-…args" class="headerlink" title="vm.$broadcast( event, […args] )"></a>vm.$broadcast( event, […args] )</h2><p>参数：</p>
+<p>{String} event<br>[…args]<br>用法：</p>
+<p>广播事件，通知给当前实例的全部后代。因为后代有多个枝杈，事件将沿着各“路径”通知。每条路径上的通知在触发一个监听器后停止，除非它返回 true。</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/shirleyhu.github.io/2017/02/26/jquery事件委托/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          jquery事件委托
+        
+      </div>
+    </a>
+  
+  
+    <a href="/shirleyhu.github.io/2016/12/29/element-scroll-prevent-parent-element-scroll/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          元素滚动时禁止父元素滚动
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhudji.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2017 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/shirleyhu.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/shirleyhu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shirleyhu.github.io/js/script.js"></script>
+  </div>
+</body>
+</html>
