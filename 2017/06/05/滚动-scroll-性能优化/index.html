@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>滚动 scroll 性能优化 | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="在绑定 scroll 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。 优化方法1、防抖（debounce）防抖技术可以把多个顺序地调用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="滚动 scroll 性能优化">
+<meta property="og:url" content="https://shirleyhudji.github.io/2017/06/05/滚动-scroll-性能优化/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="在绑定 scroll 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。 优化方法1、防抖（debounce）防抖技术可以把多个顺序地调用">
+<meta property="og:updated_time" content="2017-09-13T02:50:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="滚动 scroll 性能优化">
+<meta name="twitter:description" content="在绑定 scroll 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。 优化方法1、防抖（debounce）防抖技术可以把多个顺序地调用">
+  
+    <link rel="alternative" href="/shirleyhu.github.io/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/shirleyhu.github.io/favicon.png">
+  
+  <link rel="stylesheet" href="/shirleyhu.github.io/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/shirleyhu.github.io">Home</a></li><li><a href="/shirleyhu.github.io/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/shirleyhu.github.io/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhudji.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-滚动-scroll-性能优化" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2017/06/05/滚动-scroll-性能优化/" class="article-date">
+  <time datetime="2017-06-05T02:46:53.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      滚动 scroll 性能优化
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>在绑定 scroll 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。</p>
+<h2 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h2><h3 id="1、防抖（debounce）"><a href="#1、防抖（debounce）" class="headerlink" title="1、防抖（debounce）"></a>1、防抖（debounce）</h3><p>防抖技术可以把多个顺序地调用合并成一次，即在规定的时间间隔内只执行一次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 简单的防抖动函数function debounce(func, wait, immediate) &#123;</span></div><div class="line">    <span class="comment">// 定时器变量</span></div><div class="line">    <span class="keyword">var</span> timeout;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 每次触发 scroll handler 时先清除定时器</span></div><div class="line">    clearTimeout(timeout);</div><div class="line">    <span class="comment">// 指定 xx ms 后触发真正想进行的操作 handler</span></div><div class="line">    timeout = setTimeout(func, wait);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 实际想绑定在 scroll 事件上的 handler</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">realFunc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Success"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 采用了防抖动</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,debounce(realFunc,<span class="number">500</span>));</div><div class="line"><span class="comment">// 没采用防抖动</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,realFunc);</div></pre></td></tr></table></figure>
+<h3 id="2、节流（throttle）"><a href="#2、节流（throttle）" class="headerlink" title="2、节流（throttle）"></a>2、节流（throttle）</h3><p>节流技术只允许一个函数在 x 毫秒内执行一次，跟防抖技术主要的不同在于，保证 x 毫秒内至少执行一次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 简单的节流函数function throttle(func, wait, mustRun) &#123;</span></div><div class="line">    <span class="keyword">var</span> timeout,</div><div class="line">    startTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>,</div><div class="line">        args = <span class="built_in">arguments</span>,</div><div class="line">        curTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">        clearTimeout(timeout);</div><div class="line">        <span class="comment">// 如果达到了规定的触发时间间隔，触发 handler</span></div><div class="line">        <span class="keyword">if</span>(curTime - startTime &gt;= mustRun)&#123;</div><div class="line">        func.apply(context,args);</div><div class="line">        startTime = curTime;</div><div class="line">        <span class="comment">// 没达到触发间隔，重新设定定时器</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">                timeout = setTimeout(func, wait);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 实际想绑定在 scroll 事件上的 handler</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">realFunc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Success"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 采用了节流函数</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,throttle(realFunc,<span class="number">500</span>,<span class="number">1000</span>));</div></pre></td></tr></table></figure>
+<h3 id="3、requestAnimationFrame实现节流方法"><a href="#3、requestAnimationFrame实现节流方法" class="headerlink" title="3、requestAnimationFrame实现节流方法"></a>3、requestAnimationFrame实现节流方法</h3><p>requestAnimationFrame 可替代 throttle，函数需要重新计算和渲染屏幕上的元素时，想保证动画或变化的平滑性，可以用它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ticking = <span class="literal">false</span>; <span class="comment">// rAF 触发锁</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onScroll</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(!ticking) &#123;</div><div class="line">    requestAnimationFrame(realFunc);</div><div class="line">    ticking = <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">realFunc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// do something...</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Success"</span>);</div><div class="line">    ticking = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 滚动事件监听</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, onScroll, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>详见：<br><a href="http://web.jobbole.com/86158/" target="_blank" rel="external">高性能滚动 scroll 及页面渲染优化</a><br><a href="http://bubkoo.com/2017/01/18/debouncing-throttling-explained-examples/" target="_blank" rel="external">实例解析防抖和节流函数</a><br><a href="http://y.dobit.top/Detail/340.html" target="_blank" rel="external">页面高性能滚动scroll优化——防抖与节流</a></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/shirleyhu.github.io/2017/07/12/小程序开发总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          小程序开发总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/shirleyhu.github.io/2017/05/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          Hexo博客搭建
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhudji.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/shirleyhu.github.io/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2017 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/shirleyhu.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/shirleyhu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shirleyhu.github.io/js/script.js"></script>
+  </div>
+</body>
+</html>
