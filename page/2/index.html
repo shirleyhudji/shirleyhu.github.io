@@ -44,6 +44,53 @@
     <div id="main">
       
   
+    <article id="post-element-scroll-prevent-parent-element-scroll" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2016/12/29/element-scroll-prevent-parent-element-scroll/" class="article-date">
+  <time datetime="2016-12-29T12:01:59.000Z" itemprop="datePublished">2016-12-29</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/shirleyhu.github.io/2016/12/29/element-scroll-prevent-parent-element-scroll/">元素滚动时禁止父元素滚动</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"></div><div class="line"><span class="comment">// from: http://www.zhangxinxu.com/wordpress/2015/12/element-scroll-prevent-parent-element-scroll-js/</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleStopScroll</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> el = e.currentTarget</div><div class="line">  <span class="keyword">let</span> scrollTop = el.scrollTop</div><div class="line">  <span class="keyword">let</span> scrollHeight = el.scrollHeight</div><div class="line">  <span class="keyword">let</span> height = el.clientHeight</div><div class="line">  <span class="keyword">let</span> delta = (e.wheelDelta) ? e.wheelDelta : -(e.detail || <span class="number">0</span>)</div><div class="line">  <span class="built_in">console</span>.log(scrollTop, scrollHeight, height, delta)</div><div class="line"></div><div class="line">  <span class="comment">// delta &gt; 0 上滚</span></div><div class="line">  <span class="comment">// delta &lt; 0 下滚</span></div><div class="line">  <span class="keyword">if</span> ((delta &gt; <span class="number">0</span> &amp;&amp; scrollTop &lt;= delta) ||</div><div class="line">    (delta &lt; <span class="number">0</span> &amp;&amp; scrollHeight - height - scrollTop &lt;= <span class="number">-1</span> * delta)) &#123;</div><div class="line">    el.scrollTop = delta &gt; <span class="number">0</span> ? <span class="number">0</span> : scrollHeight</div><div class="line">    event.preventDefault()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> eventType = <span class="string">'mousewheel'</span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.document.mozHidden !== <span class="literal">undefined</span>) &#123;</div><div class="line">  eventType = <span class="string">'DOMMouseScroll'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">Vue.directive(<span class="string">'stop-scroll'</span>, &#123;</div><div class="line">  bind () &#123;</div><div class="line">    <span class="keyword">this</span>.el.addEventListener(eventType, handleStopScroll, <span class="literal">false</span>)</div><div class="line">  &#125;,</div><div class="line">  unbind () &#123;</div><div class="line">    <span class="keyword">this</span>.el.removeEventListener(eventType, handleStopScroll)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
     <article id="post-css-垂直居中" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
