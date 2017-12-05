@@ -44,6 +44,65 @@
     <div id="main">
       
   
+    <article id="post-vue实例方法-事件" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2017/01/20/vue实例方法-事件/" class="article-date">
+  <time datetime="2017-01-20T12:01:00.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/shirleyhu.github.io/2017/01/20/vue实例方法-事件/">vue实例方法 / 事件</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="vm-on-event-callback"><a href="#vm-on-event-callback" class="headerlink" title="vm.$on( event, callback )"></a>vm.$on( event, callback )</h2><p>参数：</p>
+<p>{String} event<br>{Function} callback<br>用法：</p>
+<p>监听当前实例上的自定义事件。事件可以由 vm.$emit, vm.$dispatch 或 vm.$broadcast触发。传入这些方法的附加参数都会传入这个方法的回调。</p>
+<p>示例：</p>
+<p>vm.$on(‘test’, function (msg) {<br>  console.log(msg)<br>})<br>vm.$emit(‘test’, ‘hi’)<br>// -&gt; “hi”</p>
+<h2 id="vm-emit-event-…args"><a href="#vm-emit-event-…args" class="headerlink" title="vm.$emit( event, […args] )"></a>vm.$emit( event, […args] )</h2><p>参数：</p>
+<p>{String} event<br>[…args]<br>触发当前实例上的事件。附加参数都会传给监听器回调。</p>
+<h2 id="vm-dispatch-event-…args"><a href="#vm-dispatch-event-…args" class="headerlink" title="vm.$dispatch( event, […args] )"></a>vm.$dispatch( event, […args] )</h2><p>参数：</p>
+<p>{String} event<br>[…args]<br>用法：</p>
+<p>派发事件，首先在实例上触发它，然后沿着父链向上冒泡在触发一个监听器后停止，除非它返回 true。附加参数都会传给监听器回调。</p>
+<h2 id="vm-broadcast-event-…args"><a href="#vm-broadcast-event-…args" class="headerlink" title="vm.$broadcast( event, […args] )"></a>vm.$broadcast( event, […args] )</h2><p>参数：</p>
+<p>{String} event<br>[…args]<br>用法：</p>
+<p>广播事件，通知给当前实例的全部后代。因为后代有多个枝杈，事件将沿着各“路径”通知。每条路径上的通知在触发一个监听器后停止，除非它返回 true。</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
     <article id="post-element-scroll-prevent-parent-element-scroll" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">

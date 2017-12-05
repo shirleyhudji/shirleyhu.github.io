@@ -44,6 +44,69 @@
     <div id="main">
       
   
+    <article id="post-CSS-Grid" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/shirleyhu.github.io/2017/12/05/CSS-Grid/" class="article-date">
+  <time datetime="2017-12-05T08:28:45.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/shirleyhu.github.io/2017/12/05/CSS-Grid/">CSS Grid</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>Grid(网格) 布局是第一个专门为解决布局问题而创建的 CSS 模块，我们终于不需要想尽办法hack 页面布局样式了。</p>
+<h2 id="网格容器"><a href="#网格容器" class="headerlink" title="网格容器"></a>网格容器</h2><p>我们通过在元素上声明 <code>display：grid</code> 或 <code>display：inline-grid</code> 来创建一个网格容器。一旦我们这样做，这个元素的所有直系子元素将成为网格项目。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>One<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>Two<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>Three<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>Four<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>Five<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="images/css_grid_1.jpeg" alt=""></p>
+<h2 id="网格轨道"><a href="#网格轨道" class="headerlink" title="网格轨道"></a>网格轨道</h2><p>我们通过 <code>grid-template-columns</code> 和 <code>grid-template-rows</code> 属性来定义网格中的行和列。这些属性定义了网格的轨道。一个网格轨道就是网格中任意两条线之间的空间。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">200px</span> <span class="number">200px</span> <span class="number">200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="images/css_grid_2.jpeg" alt=""></p>
+<h3 id="fr单位"><a href="#fr单位" class="headerlink" title="fr单位"></a>fr单位</h3><p>轨道可以使用任何长度单位进行定义。 网格还引入了一个额外的长度单位来帮助我们创建灵活的网格轨道。新的fr单位代表网格容器中可用空间的一等份。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="number">1</span>fr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用repeat"><a href="#使用repeat" class="headerlink" title="使用repeat()"></a>使用repeat()</h3><p>使用 repeat() 标记来重复部分或整个轨道列表<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="number">1</span>fr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也可写成：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, 1fr);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="隐式和显式网格"><a href="#隐式和显式网格" class="headerlink" title="隐式和显式网格"></a>隐式和显式网格</h3><p>当我们创建上文中网格例子的时候，我们用 <code>grid-template-columns</code> 属性定义了自己的列轨道，但是却让网格按所需的内容创建行，这些行会被创建在隐式网格中。显式网格包含了你在 <code>grid-template-columns</code> 和 <code>grid-template-rows</code> 属性中定义的行和列。如果你在网格定义之外又放了一些东西，或者因为内容的数量而需要的更多网格轨道的时候，网格将会在隐式网格中创建行和列。按照默认，这些轨道将自动定义尺寸，所以会根据它里面的内容改变尺寸。</p>
+<p>你也可以在隐式网格中用 <code>grid-auto-rows</code> 和 <code>grid-auto-columns</code> 属性来定义一个设置大小尺寸的轨道。</p>
+<h3 id="轨道大小和minmax"><a href="#轨道大小和minmax" class="headerlink" title="轨道大小和minmax()"></a>轨道大小和minmax()</h3><p>下面例子中我用minmax()作为grid-auto-rows的值,自动创建的行高将会是最小100像素，最大为auto<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, 1fr);</div><div class="line">  <span class="attribute">grid-auto-rows</span>: <span class="built_in">minmax</span>(100px, auto);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="网格间距"><a href="#网格间距" class="headerlink" title="网格间距"></a>网格间距</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">   <span class="attribute">display</span>: grid;</div><div class="line">   <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, 1fr);</div><div class="line">   <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>;</div><div class="line">   <span class="attribute">grid-row-gap</span>: <span class="number">1em</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="放置网格项目"><a href="#放置网格项目" class="headerlink" title="放置网格项目"></a>放置网格项目</h2><p>当放置子元素时，我们使用 网格线 对元素进行定位。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"one"</span>&gt;</span>One<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"two"</span>&gt;</span>Two<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"three"</span>&gt;</span>Three<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"four"</span>&gt;</span>Four<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"five"</span>&gt;</span>Five<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, 1fr);</div><div class="line">  <span class="attribute">grid-gap</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">grid-auto-rows</span>: <span class="built_in">minmax</span>(200px, auto);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.one</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#e4f0f5</span>;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.two</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#fff3d5</span>;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / <span class="number">4</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span> / <span class="number">3</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.three</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#eeeeee</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">5</span>;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.four</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#e4f0f5</span>;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">3</span>/<span class="number">5</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.five</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#fff3d5</span>;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="images/css_grid_3.jpeg" alt=""></p>
+<p>使用以上的方式就能快速实现任意想要的布局。</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
     <article id="post-node单元测试" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
@@ -521,65 +584,6 @@
 	<div class="entry-content">
 		
     	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$(selector).delegate(selector, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line"> <span class="keyword">var</span> slug = $(<span class="keyword">this</span>).data(<span class="string">'slug'</span>);</div><div class="line"></div><div class="line"> self.initData(slug);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-vue实例方法-事件" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/shirleyhu.github.io/2017/01/20/vue实例方法-事件/" class="article-date">
-  <time datetime="2017-01-20T12:01:00.000Z" itemprop="datePublished">2017-01-20</time>
-</a>
-		</span>
-		<span class="meta-elements author">Shirley Hu</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/shirleyhu.github.io/2017/01/20/vue实例方法-事件/">vue实例方法 / 事件</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<h2 id="vm-on-event-callback"><a href="#vm-on-event-callback" class="headerlink" title="vm.$on( event, callback )"></a>vm.$on( event, callback )</h2><p>参数：</p>
-<p>{String} event<br>{Function} callback<br>用法：</p>
-<p>监听当前实例上的自定义事件。事件可以由 vm.$emit, vm.$dispatch 或 vm.$broadcast触发。传入这些方法的附加参数都会传入这个方法的回调。</p>
-<p>示例：</p>
-<p>vm.$on(‘test’, function (msg) {<br>  console.log(msg)<br>})<br>vm.$emit(‘test’, ‘hi’)<br>// -&gt; “hi”</p>
-<h2 id="vm-emit-event-…args"><a href="#vm-emit-event-…args" class="headerlink" title="vm.$emit( event, […args] )"></a>vm.$emit( event, […args] )</h2><p>参数：</p>
-<p>{String} event<br>[…args]<br>触发当前实例上的事件。附加参数都会传给监听器回调。</p>
-<h2 id="vm-dispatch-event-…args"><a href="#vm-dispatch-event-…args" class="headerlink" title="vm.$dispatch( event, […args] )"></a>vm.$dispatch( event, […args] )</h2><p>参数：</p>
-<p>{String} event<br>[…args]<br>用法：</p>
-<p>派发事件，首先在实例上触发它，然后沿着父链向上冒泡在触发一个监听器后停止，除非它返回 true。附加参数都会传给监听器回调。</p>
-<h2 id="vm-broadcast-event-…args"><a href="#vm-broadcast-event-…args" class="headerlink" title="vm.$broadcast( event, […args] )"></a>vm.$broadcast( event, […args] )</h2><p>参数：</p>
-<p>{String} event<br>[…args]<br>用法：</p>
-<p>广播事件，通知给当前实例的全部后代。因为后代有多个枝杈，事件将沿着各“路径”通知。每条路径上的通知在触发一个监听器后停止，除非它返回 true。</p>
 
     
 	</div>
