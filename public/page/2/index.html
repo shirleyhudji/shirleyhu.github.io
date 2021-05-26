@@ -44,6 +44,311 @@
     <div id="main">
       
   
+    <article id="post-设置微信自定义分享内容" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2017/07/26/设置微信自定义分享内容/" class="article-date">
+  <time datetime="2017-07-26T11:44:19.000Z" itemprop="datePublished">2017-07-26</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2017/07/26/设置微信自定义分享内容/">设置微信自定义分享内容</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 设置微信自定义分享内容</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> config = &#123;</div><div class="line">  <span class="attr">title</span>: <span class="built_in">document</span>.title,</div><div class="line">  <span class="attr">only_title</span>: <span class="string">''</span>,</div><div class="line">  <span class="attr">desc</span>: <span class="string">''</span>,</div><div class="line">  <span class="attr">imgUrl</span>: <span class="string">'share_wechat.jpg'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">weixin</span>(<span class="params">config</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="regexp">/micromessenger/i</span>.test(navigator.userAgent)) &#123;</div><div class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> requirejs == <span class="string">'function'</span>) &#123;</div><div class="line">        requirejs([<span class="string">'//xxx/wechat/sdk/share.js'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">weixinShare</span>) </span>&#123;</div><div class="line">          <span class="keyword">if</span>(weixinShare &amp;&amp; <span class="keyword">typeof</span> weixinShare == <span class="string">'function'</span>) &#123;</div><div class="line">            weixinShare(&#123;</div><div class="line">              <span class="attr">shareData</span>: config</div><div class="line">            &#125;);</div><div class="line">          &#125;</div><div class="line">        &#125;);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">        script.src = <span class="string">'//xxx/wechat/sdk/share.js'</span>;</div><div class="line">        script.onload = <span class="function"><span class="keyword">function</span> <span class="title">goShare</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">if</span>(<span class="built_in">window</span>.weixinShare &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.weixinShare == <span class="string">'function'</span>) &#123;</div><div class="line">            <span class="built_in">window</span>.weixinShare(&#123;</div><div class="line">              <span class="attr">shareData</span>: config</div><div class="line">            &#125;);</div><div class="line">          &#125;</div><div class="line">        &#125;;</div><div class="line">        <span class="built_in">document</span>.body.appendChild(script);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-小程序开发总结" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2017/07/12/小程序开发总结/" class="article-date">
+  <time datetime="2017-07-12T06:26:45.000Z" itemprop="datePublished">2017-07-12</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2017/07/12/小程序开发总结/">小程序开发</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><p><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/index.html?t=20161107" target="_blank" rel="external">https://mp.weixin.qq.com/debug/wxadoc/dev/index.html?t=20161107</a></p>
+<h2 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h2><p><a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html?t=20161107" target="_blank" rel="external">https://mp.weixin.qq.com/debug/wxadoc/design/index.html?t=20161107</a></p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>IDE<br><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161107" target="_blank" rel="external">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161107</a></p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>从搭建一个微信小程序开始<br><a href="https://www.qcloud.com/act/event/yingyonghao.html?from=timeline&amp;isappinstalled=0" target="_blank" rel="external">https://www.qcloud.com/act/event/yingyonghao.html?from=timeline&amp;isappinstalled=0</a></p>
+<h2 id="开发框架WePY"><a href="#开发框架WePY" class="headerlink" title="开发框架WePY"></a>开发框架WePY</h2><p><a href="https://tencent.github.io/wepy/document.html#/" target="_blank" rel="external">https://tencent.github.io/wepy/document.html#/</a></p>
+<h2 id="资源汇总"><a href="#资源汇总" class="headerlink" title="资源汇总"></a>资源汇总</h2><p><a href="https://github.com/justjavac/awesome-wechat-weapp" target="_blank" rel="external">https://github.com/justjavac/awesome-wechat-weapp</a></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-滚动-scroll-性能优化" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2017/06/05/滚动-scroll-性能优化/" class="article-date">
+  <time datetime="2017-06-05T02:46:53.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2017/06/05/滚动-scroll-性能优化/">滚动 scroll 性能优化</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>在绑定 scroll 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。</p>
+<h2 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h2><h3 id="1、防抖（debounce）"><a href="#1、防抖（debounce）" class="headerlink" title="1、防抖（debounce）"></a>1、防抖（debounce）</h3><p>防抖技术可以把多个顺序地调用合并成一次，即在规定的时间间隔内只执行一次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 简单的防抖动函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, wait, immediate</span>) </span>&#123;</div><div class="line">    <span class="comment">// 定时器变量</span></div><div class="line">    <span class="keyword">var</span> timeout;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 每次触发 scroll handler 时先清除定时器</span></div><div class="line">    clearTimeout(timeout);</div><div class="line">    <span class="comment">// 指定 xx ms 后触发真正想进行的操作 handler</span></div><div class="line">    timeout = setTimeout(func, wait);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 实际想绑定在 scroll 事件上的 handler</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">realFunc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Success"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 采用了防抖动</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,debounce(realFunc,<span class="number">500</span>));</div><div class="line"><span class="comment">// 没采用防抖动</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,realFunc);</div></pre></td></tr></table></figure>
+<h3 id="2、节流（throttle）"><a href="#2、节流（throttle）" class="headerlink" title="2、节流（throttle）"></a>2、节流（throttle）</h3><p>节流技术只允许一个函数在 x 毫秒内执行一次，跟防抖技术主要的不同在于，保证 x 毫秒内至少执行一次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 简单的节流函数function throttle(func, wait, mustRun) &#123;</span></div><div class="line">    <span class="keyword">var</span> timeout,</div><div class="line">    startTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>,</div><div class="line">        args = <span class="built_in">arguments</span>,</div><div class="line">        curTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">        clearTimeout(timeout);</div><div class="line">        <span class="comment">// 如果达到了规定的触发时间间隔，触发 handler</span></div><div class="line">        <span class="keyword">if</span>(curTime - startTime &gt;= mustRun)&#123;</div><div class="line">        func.apply(context,args);</div><div class="line">        startTime = curTime;</div><div class="line">        <span class="comment">// 没达到触发间隔，重新设定定时器</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">                timeout = setTimeout(func, wait);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 实际想绑定在 scroll 事件上的 handler</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">realFunc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Success"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 采用了节流函数</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,throttle(realFunc,<span class="number">500</span>,<span class="number">1000</span>));</div></pre></td></tr></table></figure>
+<h3 id="3、requestAnimationFrame实现节流方法"><a href="#3、requestAnimationFrame实现节流方法" class="headerlink" title="3、requestAnimationFrame实现节流方法"></a>3、requestAnimationFrame实现节流方法</h3><p>requestAnimationFrame 可替代 throttle，函数需要重新计算和渲染屏幕上的元素时，想保证动画或变化的平滑性，可以用它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ticking = <span class="literal">false</span>; <span class="comment">// rAF 触发锁</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onScroll</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(!ticking) &#123;</div><div class="line">    requestAnimationFrame(realFunc);</div><div class="line">    ticking = <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">realFunc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// do something...</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Success"</span>);</div><div class="line">    ticking = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 滚动事件监听</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, onScroll, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>详见：<br><a href="http://web.jobbole.com/86158/" target="_blank" rel="external">高性能滚动 scroll 及页面渲染优化</a><br><a href="http://bubkoo.com/2017/01/18/debouncing-throttling-explained-examples/" target="_blank" rel="external">实例解析防抖和节流函数</a><br><a href="http://y.dobit.top/Detail/340.html" target="_blank" rel="external">页面高性能滚动scroll优化——防抖与节流</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> timmer</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 第一次触发函数的时候，延迟delay时间执行，如果在delay时间段内再次触发该函数，则重新开始计时</span></div><div class="line">        <span class="comment">// 如果delay时间段内没有触发该函数，则执行该函数</span></div><div class="line">        <span class="keyword">if</span> (timmer) &#123;</div><div class="line">            clearTimeout(timmer)</div><div class="line">        &#125;</div><div class="line">        timmer = setTimeout(fn, wait)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(timer) <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            fn()</div><div class="line">            timer = <span class="literal">null</span></div><div class="line">        &#125;, delay)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func, wait</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> args,</div><div class="line">        result,</div><div class="line">        thisArg,</div><div class="line">        timeoutId,</div><div class="line">        lastCalled = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>,</div><div class="line">          remain = wait - (now - lastCalled);</div><div class="line"></div><div class="line">      args = <span class="built_in">arguments</span>;</div><div class="line">      thisArg = <span class="keyword">this</span>;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (remain &lt;= <span class="number">0</span>) &#123;</div><div class="line">        lastCalled = now;</div><div class="line">        result = func.apply(thisArg, args);</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (!timeoutId) &#123;</div><div class="line">        timeoutId = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            lastCalled = <span class="keyword">new</span> <span class="built_in">Date</span>;</div><div class="line">            timeoutId = <span class="literal">null</span>;</div><div class="line">            result = func.apply(thisArg, args);</div><div class="line">        &#125;, remain);</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> result;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-ES6-解构" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2017/04/24/ES6-解构/" class="article-date">
+  <time datetime="2017-04-24T11:53:21.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2017/04/24/ES6-解构/">ES6 解构</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="从数组中取元素"><a href="#从数组中取元素" class="headerlink" title="从数组中取元素"></a>从数组中取元素</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> names = [<span class="string">'Luke'</span>, <span class="string">'Eva'</span>, <span class="string">'Phil'</span>];</div><div class="line"></div><div class="line"><span class="keyword">const</span> [first] = names;</div><div class="line"><span class="built_in">console</span>.log(first); <span class="comment">// 'Luke'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, second] = names;</div><div class="line"><span class="built_in">console</span>.log(first, second); <span class="comment">// 'Luke' 'Eva'</span></div></pre></td></tr></table></figure>
+<h3 id="元素缺失时的默认值"><a href="#元素缺失时的默认值" class="headerlink" title="元素缺失时的默认值"></a>元素缺失时的默认值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [first, second, third, fourth=<span class="string">'Martin'</span>] = names;</div><div class="line"><span class="built_in">console</span>.log(fourth); <span class="comment">// 'Martin'</span></div></pre></td></tr></table></figure>
+<h3 id="跳过数组中的元素"><a href="#跳过数组中的元素" class="headerlink" title="跳过数组中的元素"></a>跳过数组中的元素</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [first, , second] = names;</div><div class="line"><span class="built_in">console</span>.log(first, second); <span class="comment">// 'Luke' 'Phil'</span></div></pre></td></tr></table></figure>
+<h3 id="分配数组中剩下的给某元素"><a href="#分配数组中剩下的给某元素" class="headerlink" title="分配数组中剩下的给某元素"></a>分配数组中剩下的给某元素</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [first, ...rest] = names;</div><div class="line"><span class="built_in">console</span>.log(rest); <span class="comment">// ['Eva','Phil']</span></div></pre></td></tr></table></figure>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> person = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Luke'</span>,</div><div class="line">  <span class="attr">age</span>: <span class="string">'24'</span>,</div><div class="line">  <span class="attr">facts</span>: &#123;</div><div class="line">    <span class="attr">hobby</span>: <span class="string">'Photo'</span>,</div><div class="line">    <span class="attr">work</span>: <span class="string">'Software Developer'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="从对象中提取数据"><a href="#从对象中提取数据" class="headerlink" title="从对象中提取数据"></a>从对象中提取数据</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;name, age&#125; = person;</div><div class="line"><span class="built_in">console</span>.log(name, age); <span class="comment">// 'Luke' '24'</span></div></pre></td></tr></table></figure>
+<h3 id="提取嵌套值"><a href="#提取嵌套值" class="headerlink" title="提取嵌套值"></a>提取嵌套值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;<span class="attr">facts</span>: &#123;hobby&#125;&#125; = person;</div><div class="line"><span class="built_in">console</span>.log(hobby); <span class="comment">// 'Photo'</span></div></pre></td></tr></table></figure>
+<h3 id="数据缺失时的默认值"><a href="#数据缺失时的默认值" class="headerlink" title="数据缺失时的默认值"></a>数据缺失时的默认值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;hometown = <span class="string">'Unknown'</span>&#125; = person;</div><div class="line"><span class="built_in">console</span>.log(hometown); <span class="comment">// 'Unknown'</span></div></pre></td></tr></table></figure>
+<h2 id="解构函数参数"><a href="#解构函数参数" class="headerlink" title="解构函数参数"></a>解构函数参数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toString = <span class="function">(<span class="params">&#123;name, age&#125;</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;age&#125;</span> years old`</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">toString(person); <span class="comment">// Luke is 24 years old</span></div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-min-height的百分比" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2017/04/06/min-height的百分比/" class="article-date">
+  <time datetime="2017-04-06T11:51:50.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2017/04/06/min-height的百分比/">min-height的百分比</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>设置min-height的元素即使内容的高度很少时也能撑开到min-height设置的高度;当内容的高度大于min-height时就设置为内容的高度.</p>
+<p>要使min-height的百分比值生效,其父元素的<strong>height</strong>值必须为一个<strong>固定的高度</strong>或者是一个有效的<strong>百分比高度</strong>.</p>
+<p>值得注意的是,父元素设置了有效的min-height但没有设置height属性时,子元素的height和min-height的百分比不会生效.因为设置height和min-height必须基于一个设置了固定高度或者是一个有效百分比高度的父元素.</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-判断窗口滚动到底部" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2017/02/27/判断窗口滚动到底部/" class="article-date">
+  <time datetime="2017-02-27T11:57:58.000Z" itemprop="datePublished">2017-02-27</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2017/02/27/判断窗口滚动到底部/">判断窗口滚动到底部</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">onScroll: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> BOTTOM_OFFSET = <span class="number">0</span>;</div><div class="line">  $(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> $currentWindow = $(<span class="built_in">window</span>);</div><div class="line">    <span class="comment">//当前窗口的高度</span></div><div class="line">    <span class="keyword">var</span> windowHeight = $currentWindow.height();</div><div class="line"></div><div class="line">    <span class="comment">//当前滚动条从上往下滚动的距离</span></div><div class="line">    <span class="keyword">var</span> scrollTop = $currentWindow.scrollTop();</div><div class="line"></div><div class="line">    <span class="comment">//当前文档的高度</span></div><div class="line">    <span class="keyword">var</span> docHeight = $(<span class="built_in">document</span>).height();</div><div class="line"></div><div class="line">    <span class="comment">//当 滚动条距底部的距离 + 滚动条滚动的距离 &gt;= 文档的高度 - 窗口的高度</span></div><div class="line">    <span class="keyword">if</span> ((BOTTOM_OFFSET + scrollTop) &gt;= docHeight - windowHeight) &#123;</div><div class="line">      self.loadMore();</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
     <article id="post-vue实例方法-事件" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
@@ -198,11 +503,11 @@
 
 
   
-    <article id="post-NodeJs-的几种文件路径" class="post">
+    <article id="post-原型与继承" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
-			<a href="/blog/2016/09/18/NodeJs-的几种文件路径/" class="article-date">
-  <time datetime="2016-09-18T12:03:54.000Z" itemprop="datePublished">2016-09-18</time>
+			<a href="/blog/2016/10/22/原型与继承/" class="article-date">
+  <time datetime="2016-10-22T14:55:04.000Z" itemprop="datePublished">2016-10-22</time>
 </a>
 		</span>
 		<span class="meta-elements author">Shirley Hu</span>
@@ -215,165 +520,21 @@
 		
   
     <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/blog/2016/09/18/NodeJs-的几种文件路径/">NodeJs 的几种文件路径 </a>
+      <a class="article-title" href="/blog/2016/10/22/原型与继承/">原型与继承</a>
     </h1>
   
 
 	</header>
 	<div class="entry-content">
 		
-    	<p>先看一个简单的栗子：</p>
-<p>假如我们有这样的文件结构：</p>
-<p>app/<br>  -lib/<br>    -common.js<br>  -model<br>    -task.js<br>    -test.js</p>
-<p>在 task.js 里编写如下的代码：</p>
-<p>var path = require(‘path’);</p>
-<p>console.log(<strong>dirname);<br>console.log(</strong>filename);<br>console.log(process.cwd());<br>console.log(path.resolve(‘./‘));</p>
-<p>在 model 目录下运行 node task.js 得到的输出是：</p>
-<p>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js/task.js<br>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js</p>
-<p>然后在 app 目录下运行 node model/task.js，得到的输出是：</p>
-<p>/Users/guo/Sites/learn/app/model.js<br>/Users/guo/Sites/learn/app/model.js/task.js<br>/Users/guo/Sites/learn/app<br>/Users/guo/Sites/learn/app</p>
-<p>那么，不好意思不是问题来了~T_T,我们可以得出一些肤浅的结论了：</p>
-<p><strong>dirname: 总是返回被执行的 js 所在文件夹的绝对路径
-</strong>filename: 总是返回被执行的 js 的绝对路径<br>process.cwd(): 总是返回运行 node 命令时所在的文件夹的绝对路径<br>./: 跟 process.cwd() 一样、一样、一样的吗？</p>
-<p>只有在 require() 时才使用相对路径(./, ../) 的写法，其他地方一律使用绝对路径，如下：</p>
-<p>// 当前目录下<br>path.dirname(<strong>filename) + ‘/test.js’;<br>// 相邻目录下<br>path.resolve(</strong>dirname, ‘../lib/common.js’);</p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-ES6-Promise" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/blog/2016/09/09/ES6-Promise/" class="article-date">
-  <time datetime="2016-09-09T03:48:18.000Z" itemprop="datePublished">2016-09-09</time>
-</a>
-		</span>
-		<span class="meta-elements author">Shirley Hu</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/blog/2016/09/09/ES6-Promise/">ES6 Promise</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<p><code>Pending</code>（进行中）、<code>Resolved</code>（已完成，又称Fulfilled）和<code>Rejected</code>（已失败）</p>
-<p>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个Promise实例，表示异步操作的结果有可能是一个值，也有可能是另一个异步操作</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail'</span>)), <span class="number">3000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(p1), <span class="number">1000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">p2</div><div class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> <span class="built_in">console</span>.log(result))</div><div class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error))</div><div class="line"><span class="comment">// Error: fail</span></div></pre></td></tr></table></figure>
-<h2 id="Promise-prototype-then（）Promise-prototype-catch（）"><a href="#Promise-prototype-then（）Promise-prototype-catch（）" class="headerlink" title="Promise.prototype.then（）Promise.prototype.catch（）"></a>Promise.prototype.then（）Promise.prototype.catch（）</h2><p>Promise实例具有then方法，也就是说，then方法是定义在原型对象Promise.prototype上的。它的作用是为Promise实例添加状态改变时的回调函数。前面说过，then方法的第一个参数是Resolved状态的回调函数，第二个参数（可选）是Rejected状态的回调函数。</p>
-<p>then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">p.then(<span class="function">(<span class="params">val</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"fulfilled:"</span>, val))</div><div class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"rejected:"</span>, err));</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">p.then(<span class="function">(<span class="params">val</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"fulfilled:"</span>, val))</div><div class="line">  .then(<span class="literal">null</span>, (err) =&gt; <span class="built_in">console</span>.log(<span class="string">"rejected:"</span>, err));</div></pre></td></tr></table></figure></p>
-<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h2><h2 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a>Promise.resolve()</h2><p>有时需要将现有对象转为Promise对象，Promise.resolve方法就起到这个作用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(<span class="number">42</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h2 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject()"></a>Promise.reject()</h2><p>Promise.reject(reason)方法也会返回一个新的Promise实例，该实例的状态为rejected。它的参数用法与Promise.resolve方法完全一致。</p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-Sublime-Text快捷键" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/blog/2016/09/05/Sublime-Text快捷键/" class="article-date">
-  <time datetime="2016-09-05T11:54:47.000Z" itemprop="datePublished">2016-09-05</time>
-</a>
-		</span>
-		<span class="meta-elements author">Shirley Hu</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/blog/2016/09/05/Sublime-Text快捷键/">Sublime Text快捷键</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<ul>
-<li><strong>Ctrl+Shift+P</strong>：打开命令面板</li>
-<li><strong>Ctrl+P</strong>：搜索项目中的文件</li>
-<li><strong>Ctrl+G</strong>：跳转到第几行</li>
-<li><strong>Ctrl+W</strong>：关闭当前打开文件</li>
-<li><strong>Ctrl+Shift+W</strong>：关闭所有打开文件</li>
-<li><strong>Ctrl+Shift+V</strong>：粘贴并格式化</li>
-<li><strong>Ctrl+D</strong>：选择单词，重复可增加选择下一个相同的单词</li>
-<li><strong>Ctrl+L</strong>：选择行，重复可依次增加选择下一行</li>
-<li><strong>Ctrl+Shift+L</strong>：选择多行</li>
-<li><strong>Ctrl+Shift+Enter</strong>：在当前行前插入新行</li>
-<li><strong>Ctrl+X</strong>：删除当前行</li>
-<li><strong>Ctrl+M</strong>：跳转到对应括号</li>
-<li><strong>Ctrl+U</strong>：软撤销，撤销光标位置</li>
-<li><strong>Ctrl+J</strong>：选择标签内容</li>
-<li><strong>Ctrl+F</strong>：查找内容</li>
-<li><strong>Ctrl+Shift+F</strong>：查找并替换</li>
-<li><strong>Ctrl+H</strong>：替换</li>
-<li><strong>Ctrl+R</strong>：前往 method</li>
-<li><strong>Ctrl+N</strong>：新建窗口</li>
-<li><strong>Ctrl+K+B</strong>：开关侧栏</li>
-<li><strong>Ctrl+Shift+M</strong>：选中当前括号内容，重复可选着括号本身</li>
-<li><strong>Ctrl+F2</strong>：设置/删除标记</li>
-<li><strong>Ctrl+/</strong>：注释当前行</li>
-<li><strong>Ctrl+Shift+/</strong>：当前位置插入注释</li>
-<li><strong>Ctrl+Alt+/</strong>：块注释，并Focus到首行，写注释说明用的</li>
-<li><strong>Ctrl+Shift+A</strong>：选择当前标签前后，修改标签用的</li>
-<li><strong>F11</strong>：全屏</li>
-<li><strong>Shift+F11</strong>：全屏免打扰模式，只编辑当前文件</li>
-<li><strong>Alt+F3</strong>：选择所有相同的词</li>
-<li><strong>Alt+.</strong>：闭合标签</li>
-<li><strong>Alt+Shift+数字</strong>：分屏显示</li>
-<li><strong>Alt+数字</strong>：切换打开第N个文件</li>
-<li><strong>Shift+右键拖动</strong>：光标多不，用来更改或插入列内容</li>
-<li>鼠标的前进后退键可切换Tab文件</li>
-<li><strong>按Ctrl，依次点击或选取</strong>，可需要编辑的多个位置</li>
-<li><strong>按Ctrl+Shift+上下键</strong>，可替换行</li>
-</ul>
+    	<h2 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h2><p>由function创造出来的函数<br>系统内置函数对象 Function，Object，Number，String<br>只有函数对象才有 prototype 属性</p>
+<h2 id="原型对象-prototype"><a href="#原型对象-prototype" class="headerlink" title="原型对象 prototype"></a>原型对象 prototype</h2><h2 id="指针-proto"><a href="#指针-proto" class="headerlink" title="指针 proto"></a>指针 <em>proto</em></h2><p>所有对象都有<em>proto</em>属性，指向构造该对象的构造函数的prototype<br>function Person() {<br>  this.name = ‘name’<br>}<br>var person1 = new Person()<br>person1._proto = Person.prototype</p>
+<h2 id="构造函数-constructor"><a href="#构造函数-constructor" class="headerlink" title="构造函数 constructor"></a>构造函数 constructor</h2><p>function Person() {<br>  this.name = ‘name’<br>}<br>var person1 = new Person()<br>person1.constructor = Person<br>person1._proto.constructor = Person.prototype.constructor = Person</p>
+<h2 id="简单原型链继承"><a href="#简单原型链继承" class="headerlink" title="简单原型链继承"></a>简单原型链继承</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'super'</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">// 利用原型链实现继承, 缺点：包含引用类型值的原型属性会被所有实例共享</span></div><div class="line">Sub.prototype = <span class="keyword">new</span> Super()</div></pre></td></tr></table></figure>
+<h2 id="构造函数继承"><a href="#构造函数继承" class="headerlink" title="构造函数继承"></a>构造函数继承</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'super'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 缺点：方法都只能在构造函数中定义，没有办法实现方法的复用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  Super.call(<span class="keyword">this</span>, ...arguments)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="组合式继承"><a href="#组合式继承" class="headerlink" title="组合式继承"></a>组合式继承</h2><p>使用原型链实现对原型方法的继承，使用构造函数实现对实例属性的继承<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'super'</span></div><div class="line">&#125;</div><div class="line">Super.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 通过 构造函数继承属性</span></div><div class="line">  Super.call(<span class="keyword">this</span>, ...arguments)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 利用原型链实现继承, 缺点：包含引用类型值的原型属性会被所有实例共享</span></div><div class="line">Sub.prototype = <span class="keyword">new</span> Super()</div><div class="line"><span class="comment">// 重写了 Sub 的 prototype 属性，因此其 constructor 也被重写了，需要手动修正</span></div><div class="line">Sub.prototype.constructor = Sub</div><div class="line"></div><div class="line"><span class="comment">// 定义子类自己的方法</span></div><div class="line">Sub.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.age</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h2><h2 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span>(<span class="params">original</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> clone = <span class="built_in">Object</span>.create(original)</div><div class="line">    clone.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Hi"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> clone</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="组合寄生式继承"><a href="#组合寄生式继承" class="headerlink" title="组合寄生式继承"></a>组合寄生式继承</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'super'</span></div><div class="line">&#125;</div><div class="line">Super.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  Super.call(<span class="keyword">this</span>, ...arguments)</div><div class="line">&#125;</div><div class="line">Sub.prototype = <span class="built_in">Object</span>.create(Super.prototype)</div><div class="line">Sub.prototype.constructor = Sub</div><div class="line"></div><div class="line">Sub.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.age</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
     
 	</div>
@@ -398,7 +559,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -414,7 +575,7 @@
 		<a href="/blog/">风になる</a>
 	</h1>
 	<span class="copyright">
-		&copy; 2018 Shirley Hu<br>
+		&copy; 2021 Shirley Hu<br>
 		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
 	</span>

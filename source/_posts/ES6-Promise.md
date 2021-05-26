@@ -35,6 +35,24 @@ p.then((val) => console.log("fulfilled:", val))
 ```
 
 ## Promise.all()
+```js
+Promise.prototype.all = function(promises) {
+  let results = []
+  return new Promise((resolve, rejected) => {
+    for(let i=0; i<promises.length; i++) {
+      promises[i].then((res) => {
+        results.push(res)
+        if (i === promises.length -1) {
+          resolve(results)
+        }
+      }).catch((err) => {
+        reject(err)
+      })
+    }
+  })
+}
+```
+
 ## Promise.race()
 ## Promise.resolve()
 有时需要将现有对象转为Promise对象，Promise.resolve方法就起到这个作用。
@@ -45,3 +63,65 @@ Promise.resolve(42).then(function(value){
 ```
 ## Promise.reject()
 Promise.reject(reason)方法也会返回一个新的Promise实例，该实例的状态为rejected。它的参数用法与Promise.resolve方法完全一致。
+
+
+手写Promise的polyfill
+```js
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+function MyPromise(executor) {
+  this.state = PENDING;
+  this.value = null;
+  this.reason = null;
+  this.onFulfilledCallbacks = [];
+  this.onRejectedCallbacks = [];
+  var self = this;
+  
+  function resolve(val) {
+    if (self.state === PENDING) {
+      self.state = FULFILLED;
+      self.value = value;
+
+      self.onFulfilledCallbacks.forEach(function(fulfilledCallback) {
+        fulfilledCallback();
+      });
+    }
+  }
+  function rejected(reason) {
+     if (self.state === PENDING) {
+      self.state = REJECTED;
+      self.reason = reason;
+
+      self.onRejectedCallbacks.forEach(function(rejectedCallback) {
+        rejectedCallback();
+      });
+    }
+  }
+
+  try {
+    executor(resolve, rejected);
+  } catch (reason) {
+    reject(reason);
+  }
+}
+
+MyPromise.prototype.then = function(onResolve, onRejected) {
+  if (self.state === PENDING) {
+    self.onFulfilledCallbacks.push(() => {
+        onFuifilled(self.value);
+    });
+    self.onRejectedCallbacks.push(() => {
+        onRejected(self.reason);
+    });
+  }
+  if (this.state === FULFILLED) {
+    onResolve(this.value)
+  }
+  if (this.state === REJECTED) {
+    onRejected(this.reason)
+  }
+}
+
+```

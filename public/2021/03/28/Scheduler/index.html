@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="class Scheduler {   constructor () {     this.count = 0     this.waitQueue = [];   }   add(promiseCreator) {       if (this.count &amp;lt; 2) {           this.count += 1;           return this.run(promiseCre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="风になる">
+<meta property="og:url" content="https://shirleyhwj.github.io/2021/03/28/Scheduler/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="class Scheduler {   constructor () {     this.count = 0     this.waitQueue = [];   }   add(promiseCreator) {       if (this.count &amp;lt; 2) {           this.count += 1;           return this.run(promiseCre">
+<meta property="og:updated_time" content="2021-04-22T03:17:51.389Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="风になる">
+<meta name="twitter:description" content="class Scheduler {   constructor () {     this.count = 0     this.waitQueue = [];   }   add(promiseCreator) {       if (this.count &amp;lt; 2) {           this.count += 1;           return this.run(promiseCre">
+  
+    <link rel="alternative" href="/blog/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/blog">Home</a></li><li><a href="/blog/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/blog/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhwj.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-Scheduler" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2021/03/28/Scheduler/" class="article-date">
+  <time datetime="2021-03-28T03:29:14.483Z" itemprop="datePublished">2021-03-28</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+	</header>
+	<div class="entry-content">
+		
+    	class Scheduler {
+  constructor () {
+    this.count = 0
+    this.waitQueue = [];
+  }
+  add(promiseCreator) {
+      if (this.count < 2) {
+          this.count += 1;
+          return this.run(promiseCreator)
+      } else {
+          return new Promise(resolve => {
+              this.waitQueue.push(() => promiseCreator().then(resolve));
+          })
+      }
+  }
+  run(promiseCreator) {
+      return promiseCreator().then(() => {
+          this.count -= 1;
+          if (this.waitQueue.length) {
+              this.run(this.waitQueue.shift())
+          }
+      });
+  }
+}
+const timeout = (time) => new Promise(resolve => {
+  setTimeout(resolve, time)
+})
+const scheduler = new Scheduler();
+
+const addTask = (time, order) => {
+  scheduler.add(() => timeout(time)).then(() => console.log(time, 'time, order', order))
+}
+
+addTask(1000, '1');
+addTask(500, '2');
+addTask(300, '3');
+addTask(400, '4');
+// output: 2 3 1 4
+// 一开始，1、2两个任务进入队列
+// 500ms时，2完成，输出2，任务3进队
+// 800ms时，3完成，输出3，任务4进队
+// 1000ms时，1完成，输出1
+// 1200ms时，4完成，输出4
+
+var a = {n:10};
+function out(obj){
+    var b = obj;
+    var c = b;
+    b.n = 30;
+    c = {n : 40};
+    console.log(a.n);
+    console.log(b.n);
+    console.log(c.n);
+}
+out(a)
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2021/04/06/重建树/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2019/10/21/无服务架构探索之路/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          无服务架构探索之路
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhwj.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2021 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+  </div>
+</body>
+</html>

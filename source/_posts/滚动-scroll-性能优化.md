@@ -11,7 +11,8 @@ tags:
 防抖技术可以把多个顺序地调用合并成一次，即在规定的时间间隔内只执行一次。
 
 ```js
-// 简单的防抖动函数function debounce(func, wait, immediate) {
+// 简单的防抖动函数
+function debounce(func, wait, immediate) {
     // 定时器变量
     var timeout;
     return function() {
@@ -91,3 +92,57 @@ window.addEventListener('scroll', onScroll, false);
 [实例解析防抖和节流函数](http://bubkoo.com/2017/01/18/debouncing-throttling-explained-examples/)
 [页面高性能滚动scroll优化——防抖与节流](http://y.dobit.top/Detail/340.html)
 
+```js
+function debounce(fn, wait) {
+    var timmer
+    return function() {
+        // 第一次触发函数的时候，延迟delay时间执行，如果在delay时间段内再次触发该函数，则重新开始计时
+        // 如果delay时间段内没有触发该函数，则执行该函数
+        if (timmer) {
+            clearTimeout(timmer)
+        }
+        timmer = setTimeout(fn, wait)
+    }
+}
+
+function throttle(fn, delay) {
+    let timer = null;
+    return function() {
+        if(timer) return false
+        timer = setTimeout(() => {
+            fn()
+            timer = null
+        }, delay)
+    }
+}
+
+
+function throttle(func, wait) {
+    var args,
+        result,
+        thisArg,
+        timeoutId,
+        lastCalled = 0;
+
+    return function() {
+      var now = new Date,
+          remain = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remain <= 0) {
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      }
+      else if (!timeoutId) {
+        timeoutId = setTimeout(() => {
+            lastCalled = new Date;
+            timeoutId = null;
+            result = func.apply(thisArg, args);
+        }, remain);
+      }
+      return result;
+    };
+}
+```
