@@ -11,10 +11,12 @@
 <meta property="og:url" content="https://shirleyhwj.github.io/2018/07/19/视差滚动原理与实现/index.html">
 <meta property="og:site_name" content="风になる">
 <meta property="og:description" content="视差滚动（Parallax Scrolling）是指让多层背景以不同的速度移动，形成立体的运动效果，带来非常出色的视觉体验。官网的设计师们也十分热衷于这样的动效，最近的新品页面或多或少都运用了视差滚动效果。起初官网视差基本上是使用插件去完成简单的效果，但时代在进步，设计师的要求也越来越高，要实现的效果也越来越复杂，对页面性能也带来巨大负担。实现高效的视差滚动成了新的挑战。 视差滚动的原理实现视差滚">
-<meta property="og:updated_time" content="2018-07-30T06:22:59.715Z">
+<meta property="og:image" content="https://shirleyhwj.github.io/2018/07/19/视差滚动原理与实现/images/3d.png">
+<meta property="og:updated_time" content="2018-08-01T02:56:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视差滚动实践">
 <meta name="twitter:description" content="视差滚动（Parallax Scrolling）是指让多层背景以不同的速度移动，形成立体的运动效果，带来非常出色的视觉体验。官网的设计师们也十分热衷于这样的动效，最近的新品页面或多或少都运用了视差滚动效果。起初官网视差基本上是使用插件去完成简单的效果，但时代在进步，设计师的要求也越来越高，要实现的效果也越来越复杂，对页面性能也带来巨大负担。实现高效的视差滚动成了新的挑战。 视差滚动的原理实现视差滚">
+<meta name="twitter:image" content="https://shirleyhwj.github.io/2018/07/19/视差滚动原理与实现/images/3d.png">
   
     <link rel="alternative" href="/blog/atom.xml" title="风になる" type="application/atom+xml">
   
@@ -78,7 +80,7 @@
 <p>代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parallaxScroll</span>(<span class="params">elm, options</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> indicatorPosition = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> windowHeight = $<span class="built_in">window</span>.height();</div><div class="line">  <span class="keyword">var</span> elHeight = elm.height();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">loop</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> offsetTop = elm.offset().top;</div><div class="line">    <span class="keyword">var</span> scrollOffset = $<span class="built_in">window</span>.scrollTop();</div><div class="line">    <span class="keyword">if</span> (scrollOffset &gt;= offsetTop - windowHeight &amp;&amp; scrollOffset &lt;= offsetTop + elHeight) &#123;</div><div class="line">      <span class="keyword">var</span> scrollPercent = (offsetTop - windowHeight - scrollOffset) / (windowHeight + elHeight);</div><div class="line">      indicatorPosition += (scrollPercent - indicatorPosition) * options.factor;</div><div class="line">      <span class="keyword">var</span> calcOffset = indicatorPosition * options.offset;</div><div class="line">      elm.css(<span class="string">'background-position-y'</span>, calcOffset + <span class="string">'px'</span>);</div><div class="line">    &#125;</div><div class="line">    requestAnimationFrame(loop);</div><div class="line">  &#125;</div><div class="line">  loop();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>网上也有许多视差滚动的插件，可以直接使用 😀<br><a href="https://github.com/pixelcog/parallax.js" target="_blank" rel="external">parallax.js</a><br><a href="http://markdalgleish.com/projects/stellar.js/docs/" target="_blank" rel="external">Stella.js</a><br><a href="http://johnpolacek.github.io/superscrollorama/" target="_blank" rel="external">Super Scrollorama</a><br><a href="https://github.com/victa/curtain.js" target="_blank" rel="external">curtain.js</a></p>
 <h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><p>相比于 <code>background-attachment: fixed</code> 方式，我们可以随心所欲的定义元素的动画，让页面看起来更生动，动画更平滑。</p>
-<h4 id="带来的问题"><a href="#带来的问题" class="headerlink" title="带来的问题"></a>带来的问题</h4><p>监听滚动事件，要想做到尽可能地流畅渲染效果，就不可以让滚动事件节流防抖动，必须要时刻紧跟滚动事件才行，显然是有些耗费性能的。而且JS是单线程的，存在事件轮询概念，滚动事件并不一定会立刻在滚动的每一帧执行。你可能会想到使用 requestAnimationFrame 可以保证动画或变化的平滑性。但是改变一个非绝对定位元素的位置，是很有可能会触发页面的重绘，而改变 background-position 同样是会出现这种情况，如果每一帧都渲染，显然非常耗费性能的，如果页面功能复杂甚至可能造成页面的卡顿。</p>
+<h4 id="带来的问题"><a href="#带来的问题" class="headerlink" title="带来的问题"></a>带来的问题</h4><p>监听滚动事件，要想做到尽可能地流畅渲染效果，就不可以让滚动事件节流防抖动，必须要时刻紧跟滚动事件才行，显然是有些耗费性能的。改变一个非绝对定位元素的位置，是很有可能会触发页面的重绘，而改变 background-position 同样是会出现这种情况，如果每一帧都渲染，显然非常耗费性能，如果页面功能复杂甚至可能造成页面的卡顿。</p>
 <h3 id="高性能-😆"><a href="#高性能-😆" class="headerlink" title="高性能 😆"></a>高性能 😆</h3><p>为了提高性能，尝试了一种新的方式：css 3D Transforms<br>使用css实现视差滚动效果可以解决上述这些问题，并允许浏览器利用硬件加速，实现帧速相同的平滑滚动。</p>
 <p>实现方式如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 滚动容器 */</span></div><div class="line"><span class="selector-class">.parallax-viewport</span> &#123;</div><div class="line">  <span class="comment">/* 创建3D透视 */</span></div><div class="line">  <span class="attribute">perspective</span>: <span class="number">1px</span>;</div><div class="line">  <span class="comment">/* 透视消失点坐标 */</span></div><div class="line">  <span class="attribute">perspective-origin</span>: right top;</div><div class="line">  <span class="comment">/* 元素的内容以正常的方式滚动 */</span></div><div class="line">  <span class="attribute">overflow-x</span>: hidden;</div><div class="line">  <span class="attribute">overflow-y</span>: auto;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 保护子元素的3D效果 */</span></div><div class="line"><span class="selector-class">.parallax-container</span> &#123;</div><div class="line">  <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 滚动比较慢的背景元素 */</span></div><div class="line"><span class="selector-class">.parallax-child</span> &#123;</div><div class="line">  <span class="attribute">transform-origin</span>: right top <span class="number">0px</span>;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(2) <span class="built_in">translate3d</span>(0px, 0px, -1px);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-viewport"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-child"</span> <span class="attr">style</span>=<span class="string">"background-image: url('1.jpg');"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-child"</span> <span class="attr">style</span>=<span class="string">"background-image: url('2.jpg');"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -88,9 +90,10 @@
 <li>对容器元素的子元素应用Z轴变形，通过缩放子元素实现视差效果。</li>
 </ul>
 <p>运用这个方式实现了一个<a href="https://codepen.io/shirleyhwj/pen/QBgYvm" target="_blank" rel="external">demo</a></p>
-<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>定义滚动容器元素的 perspective 属性将创建固定的透视图3D视口。设置overflow-y：auto使元素的内容以正常的方式滚动，但后代元素将相对于透视图呈现，这是创建视差效果的关键。<br>对子元素设置translateZ属性，这些用于通过沿着Z轴（将其移动更远或更靠近视口）来确定视差元件的滚动速度。</p>
-<p>在典型的滚动中，即不涉及透视，滚动元素和和它的子元素的改变是1:1的。如果一个元素向下滚动300px，那子元素向上变换同样的值300px。但是，对滚动元素应用透视值扰乱了这个过程；它会改变滚动变换的基础矩阵。滚动300px距离可能子元素只会移动150px，取决于你设定的perspective和translateZ值。如果某元素的translateZ值是0，那它就会以1:1的比例滚动（正常模式），但是在Z轴上远离透视原点的子元素会以不同的比率滚动！这样就产生了视差滚动。非常重要的是，这一过程作为浏览器内部滚动机制一部分自动处理，无需监听滚动事件或改变背景位置。</p>
-<p>由于使用3D变换创建了视差效应，因此对于沿着Z轴转换的元素具有副作用——当我们将其移动距离视口更近或更远时，其可视大小会发生变化。为了解决这个问题，我们需要对该元素应用一个scale变换，使其看起来以原始大小呈现。scale可以用1 +（translateZ * -1）/perspective来计算。例如，如果我们的视口perspective为1px，并且我们沿Z轴translateZ (-2px)，则校正的scale值将为3。</p>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>定义滚动容器元素的 <code>perspective</code> 属性将创建固定的透视图3D视口。设置 <code>overflow-y：auto</code> 使元素的内容以正常的方式滚动，但后代元素将相对于透视图呈现，这是创建视差效果的关键。对子元素设置translateZ属性，将其移动更远或更靠近视口，在Z轴上远离视口的子元素会以不同的比率滚动，这样就产生了视差滚动。非常重要的是，这一过程作为浏览器内部滚动机制一部分自动处理，无需监听滚动事件或改变背景位置。</p>
+<p>由于使用3D变换创建了视差效应，因此对于沿着Z轴转换的元素具有副作用——当我们将其移动距离视口更近或更远时，其可视大小会发生变化。为了解决这个问题，我们需要对该元素应用一个scale变换，使其看起来以原始大小呈现。</p>
+<p><img src="images/3d.png" alt=""></p>
+<p>scale可以用<code>1 +（translateZ * -1）/perspective</code>来计算。例如，如果我们的视口perspective为1px，并且我们沿Z轴translateZ (-2px)，则校正的scale值将为3。</p>
 <p>网上有个<a href="https://keithclark.co.uk/articles/pure-css-parallax-websites/demo3/" target="_blank" rel="external">demo</a>可以让你直观的理解这个原理。</p>
 <h4 id="兼容性问题"><a href="#兼容性问题" class="headerlink" title="兼容性问题"></a>兼容性问题</h4><p>关于 3D Transforms，目前主流浏览器都可以支持（具体情况参考<a href="https://caniuse.com/#feat=transforms3d" target="_blank" rel="external">caniuse</a>），对于不支持的浏览器只能做降级处理。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>视差滚动其实是个非常有趣的特效。运用得当可以让我们的网页体验更上一层~</p>
@@ -111,6 +114,15 @@
 	
     
 <nav id="article-nav">
+  
+    <a href="/blog/2018/10/21/redux原理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          redux原理
+        
+      </div>
+    </a>
   
   
     <a href="/blog/2018/05/22/Node服务（GitLab-CI-CD-Docker）持续集成部署/" id="article-nav-older" class="article-nav-link-wrap">
@@ -142,7 +154,7 @@
 		<a href="/blog/">风になる</a>
 	</h1>
 	<span class="copyright">
-		&copy; 2018 Shirley Hu<br>
+		&copy; 2021 Shirley Hu<br>
 		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
 	</span>
