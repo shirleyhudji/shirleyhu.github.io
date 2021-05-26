@@ -44,6 +44,125 @@
     <div id="main">
       
   
+    <article id="post-视差滚动原理与实现" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2018/07/19/视差滚动原理与实现/" class="article-date">
+  <time datetime="2018-07-19T13:11:23.000Z" itemprop="datePublished">2018-07-19</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2018/07/19/视差滚动原理与实现/">视差滚动实践</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>视差滚动（Parallax Scrolling）是指让多层背景以不同的速度移动，形成立体的运动效果，带来非常出色的视觉体验。官网的设计师们也十分热衷于这样的动效，最近的新品页面或多或少都运用了视差滚动效果。起初官网视差基本上是使用插件去完成简单的效果，但时代在进步，设计师的要求也越来越高，要实现的效果也越来越复杂，对页面性能也带来巨大负担。实现高效的视差滚动成了新的挑战。</p>
+<h2 id="视差滚动的原理"><a href="#视差滚动的原理" class="headerlink" title="视差滚动的原理"></a>视差滚动的原理</h2><p>实现视差滚动，主要是对页面上的元素进行分层，让其以不同于页面滚轮滚动的速度运动，这样看上去就形成了视觉上的差异。<br>通常来说可以把页面上的元素分成三个层次：背景层，前景层(内容层和背景层之间的元素)，内容层。从这三个层次入手，就能营造出视差的效果：　<br>（1）背景层的滚动(最慢)；<br>（2）前景层的滚动(次慢)；<br>（3）内容层的滚动(可以和页面的滚动速度一致)。</p>
+<h2 id="视差滚动实现"><a href="#视差滚动实现" class="headerlink" title="视差滚动实现"></a>视差滚动实现</h2><h3 id="简单实现-😶"><a href="#简单实现-😶" class="headerlink" title="简单实现 😶"></a>简单实现 😶</h3><p>设置元素的背景属性 <code>background-attachment</code> 为 <code>fixed</code>。默认情况下，此属性取值为scroll，页面滚动时，内容和背景一起运动，如果取值fixed，背景相对浏览器固定。这样看上去背景和内容就分开了滚动了。<br>例如<a href="https://www.dji.com/cn/ronin-s" target="_blank" rel="external">ronin-s</a>页面。</p>
+<p>但是这样的效果，设计师一定会说：太死板了吧，能不能有点惯性的感觉？<br>于是乎，我们要让页面元素真正的“动起来”。</p>
+<h3 id="动起来-🙂"><a href="#动起来-🙂" class="headerlink" title="动起来 🙂"></a>动起来 🙂</h3><p>我们开始监听用户滚动事件，对于前景层的内容，可以随着用户滚动去改变元素的 translate(x, y, z)；对于背景层则去改变 background-position。<br>例如<a href="https://www.dji.com/cn/mavic-air" target="_blank" rel="external">mavic-air</a>页面就是通过改变元素背景位置，使背景图片”动起来“的。</p>
+<p>代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parallaxScroll</span>(<span class="params">elm, options</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> indicatorPosition = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> windowHeight = $<span class="built_in">window</span>.height();</div><div class="line">  <span class="keyword">var</span> elHeight = elm.height();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">loop</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> offsetTop = elm.offset().top;</div><div class="line">    <span class="keyword">var</span> scrollOffset = $<span class="built_in">window</span>.scrollTop();</div><div class="line">    <span class="keyword">if</span> (scrollOffset &gt;= offsetTop - windowHeight &amp;&amp; scrollOffset &lt;= offsetTop + elHeight) &#123;</div><div class="line">      <span class="keyword">var</span> scrollPercent = (offsetTop - windowHeight - scrollOffset) / (windowHeight + elHeight);</div><div class="line">      indicatorPosition += (scrollPercent - indicatorPosition) * options.factor;</div><div class="line">      <span class="keyword">var</span> calcOffset = indicatorPosition * options.offset;</div><div class="line">      elm.css(<span class="string">'background-position-y'</span>, calcOffset + <span class="string">'px'</span>);</div><div class="line">    &#125;</div><div class="line">    requestAnimationFrame(loop);</div><div class="line">  &#125;</div><div class="line">  loop();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>网上也有许多视差滚动的插件，可以直接使用 😀<br><a href="https://github.com/pixelcog/parallax.js" target="_blank" rel="external">parallax.js</a><br><a href="http://markdalgleish.com/projects/stellar.js/docs/" target="_blank" rel="external">Stella.js</a><br><a href="http://johnpolacek.github.io/superscrollorama/" target="_blank" rel="external">Super Scrollorama</a><br><a href="https://github.com/victa/curtain.js" target="_blank" rel="external">curtain.js</a></p>
+<h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><p>相比于 <code>background-attachment: fixed</code> 方式，我们可以随心所欲的定义元素的动画，让页面看起来更生动，动画更平滑。</p>
+<h4 id="带来的问题"><a href="#带来的问题" class="headerlink" title="带来的问题"></a>带来的问题</h4><p>监听滚动事件，要想做到尽可能地流畅渲染效果，就不可以让滚动事件节流防抖动，必须要时刻紧跟滚动事件才行，显然是有些耗费性能的。而且JS是单线程的，存在事件轮询概念，滚动事件并不一定会立刻在滚动的每一帧执行。你可能会想到使用 requestAnimationFrame 可以保证动画或变化的平滑性。但是改变一个非绝对定位元素的位置，是很有可能会触发页面的重绘，而改变 background-position 同样是会出现这种情况，如果每一帧都渲染，显然非常耗费性能的，如果页面功能复杂甚至可能造成页面的卡顿。</p>
+<h3 id="高性能-😆"><a href="#高性能-😆" class="headerlink" title="高性能 😆"></a>高性能 😆</h3><p>为了提高性能，尝试了一种新的方式：css 3D Transforms<br>使用css实现视差滚动效果可以解决上述这些问题，并允许浏览器利用硬件加速，实现帧速相同的平滑滚动。</p>
+<p>实现方式如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 滚动容器 */</span></div><div class="line"><span class="selector-class">.parallax-viewport</span> &#123;</div><div class="line">  <span class="comment">/* 创建3D透视 */</span></div><div class="line">  <span class="attribute">perspective</span>: <span class="number">1px</span>;</div><div class="line">  <span class="comment">/* 透视消失点坐标 */</span></div><div class="line">  <span class="attribute">perspective-origin</span>: right top;</div><div class="line">  <span class="comment">/* 元素的内容以正常的方式滚动 */</span></div><div class="line">  <span class="attribute">overflow-x</span>: hidden;</div><div class="line">  <span class="attribute">overflow-y</span>: auto;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 保护子元素的3D效果 */</span></div><div class="line"><span class="selector-class">.parallax-container</span> &#123;</div><div class="line">  <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 滚动比较慢的背景元素 */</span></div><div class="line"><span class="selector-class">.parallax-child</span> &#123;</div><div class="line">  <span class="attribute">transform-origin</span>: right top <span class="number">0px</span>;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(2) <span class="built_in">translate3d</span>(0px, 0px, -1px);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-viewport"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-child"</span> <span class="attr">style</span>=<span class="string">"background-image: url('1.jpg');"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parallax-child"</span> <span class="attr">style</span>=<span class="string">"background-image: url('2.jpg');"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>将滚动的容器元素属性设置为overflow-y: scroll（和overflow-x:hidden）。</li>
+<li>对容器元素元素应用perspective值，并将perspective-origin设置为top left或0 0。</li>
+<li>对容器元素的子元素应用Z轴变形，通过缩放子元素实现视差效果。</li>
+</ul>
+<p>运用这个方式实现了一个<a href="https://codepen.io/shirleyhwj/pen/QBgYvm" target="_blank" rel="external">demo</a></p>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>定义滚动容器元素的 perspective 属性将创建固定的透视图3D视口。设置overflow-y：auto使元素的内容以正常的方式滚动，但后代元素将相对于透视图呈现，这是创建视差效果的关键。<br>对子元素设置translateZ属性，这些用于通过沿着Z轴（将其移动更远或更靠近视口）来确定视差元件的滚动速度。</p>
+<p>在典型的滚动中，即不涉及透视，滚动元素和和它的子元素的改变是1:1的。如果一个元素向下滚动300px，那子元素向上变换同样的值300px。但是，对滚动元素应用透视值扰乱了这个过程；它会改变滚动变换的基础矩阵。滚动300px距离可能子元素只会移动150px，取决于你设定的perspective和translateZ值。如果某元素的translateZ值是0，那它就会以1:1的比例滚动（正常模式），但是在Z轴上远离透视原点的子元素会以不同的比率滚动！这样就产生了视差滚动。非常重要的是，这一过程作为浏览器内部滚动机制一部分自动处理，无需监听滚动事件或改变背景位置。</p>
+<p>由于使用3D变换创建了视差效应，因此对于沿着Z轴转换的元素具有副作用——当我们将其移动距离视口更近或更远时，其可视大小会发生变化。为了解决这个问题，我们需要对该元素应用一个scale变换，使其看起来以原始大小呈现。scale可以用1 +（translateZ * -1）/perspective来计算。例如，如果我们的视口perspective为1px，并且我们沿Z轴translateZ (-2px)，则校正的scale值将为3。</p>
+<p>网上有个<a href="https://keithclark.co.uk/articles/pure-css-parallax-websites/demo3/" target="_blank" rel="external">demo</a>可以让你直观的理解这个原理。</p>
+<h4 id="兼容性问题"><a href="#兼容性问题" class="headerlink" title="兼容性问题"></a>兼容性问题</h4><p>关于 3D Transforms，目前主流浏览器都可以支持（具体情况参考<a href="https://caniuse.com/#feat=transforms3d" target="_blank" rel="external">caniuse</a>），对于不支持的浏览器只能做降级处理。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>视差滚动其实是个非常有趣的特效。运用得当可以让我们的网页体验更上一层~</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms" target="_blank" rel="external">Using CSS Transforms</a></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-Node服务（GitLab-CI-CD-Docker）持续集成部署" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2018/05/22/Node服务（GitLab-CI-CD-Docker）持续集成部署/" class="article-date">
+  <time datetime="2018-05-22T08:55:37.000Z" itemprop="datePublished">2018-05-22</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/blog/2018/05/22/Node服务（GitLab-CI-CD-Docker）持续集成部署/">Node服务（GitLab CI/CD + Docker）持续集成部署</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><h2 id="Gitlab-CI-CD"><a href="#Gitlab-CI-CD" class="headerlink" title="Gitlab CI/CD"></a>Gitlab CI/CD</h2><h2 id="Gitlab-runner"><a href="#Gitlab-runner" class="headerlink" title="Gitlab-runner"></a>Gitlab-runner</h2><h2 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="headerlink" title="gitlab-ci.yml"></a>gitlab-ci.yml</h2><h3 id="lint"><a href="#lint" class="headerlink" title="lint"></a>lint</h3><h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3>
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/node-js/">node.js</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
     <article id="post-CSS-Grid" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
@@ -496,100 +615,6 @@
     	<p>设置min-height的元素即使内容的高度很少时也能撑开到min-height设置的高度;当内容的高度大于min-height时就设置为内容的高度.</p>
 <p>要使min-height的百分比值生效,其父元素的<strong>height</strong>值必须为一个<strong>固定的高度</strong>或者是一个有效的<strong>百分比高度</strong>.</p>
 <p>值得注意的是,父元素设置了有效的min-height但没有设置height属性时,子元素的height和min-height的百分比不会生效.因为设置height和min-height必须基于一个设置了固定高度或者是一个有效百分比高度的父元素.</p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-判断窗口滚动到底部" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/blog/2017/02/27/判断窗口滚动到底部/" class="article-date">
-  <time datetime="2017-02-27T11:57:58.000Z" itemprop="datePublished">2017-02-27</time>
-</a>
-		</span>
-		<span class="meta-elements author">Shirley Hu</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/blog/2017/02/27/判断窗口滚动到底部/">判断窗口滚动到底部</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">onScroll: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> BOTTOM_OFFSET = <span class="number">0</span>;</div><div class="line">  $(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> $currentWindow = $(<span class="built_in">window</span>);</div><div class="line">    <span class="comment">//当前窗口的高度</span></div><div class="line">    <span class="keyword">var</span> windowHeight = $currentWindow.height();</div><div class="line"></div><div class="line">    <span class="comment">//当前滚动条从上往下滚动的距离</span></div><div class="line">    <span class="keyword">var</span> scrollTop = $currentWindow.scrollTop();</div><div class="line"></div><div class="line">    <span class="comment">//当前文档的高度</span></div><div class="line">    <span class="keyword">var</span> docHeight = $(<span class="built_in">document</span>).height();</div><div class="line"></div><div class="line">    <span class="comment">//当 滚动条距底部的距离 + 滚动条滚动的距离 &gt;= 文档的高度 - 窗口的高度</span></div><div class="line">    <span class="keyword">if</span> ((BOTTOM_OFFSET + scrollTop) &gt;= docHeight - windowHeight) &#123;</div><div class="line">      self.loadMore();</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-jquery事件委托" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/blog/2017/02/26/jquery事件委托/" class="article-date">
-  <time datetime="2017-02-26T11:59:49.000Z" itemprop="datePublished">2017-02-26</time>
-</a>
-		</span>
-		<span class="meta-elements author">Shirley Hu</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/blog/2017/02/26/jquery事件委托/">jquery事件委托</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$(selector).delegate(selector, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line"> <span class="keyword">var</span> slug = $(<span class="keyword">this</span>).data(<span class="string">'slug'</span>);</div><div class="line"></div><div class="line"> self.initData(slug);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 
     
 	</div>
