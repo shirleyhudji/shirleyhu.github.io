@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>元素滚动时禁止父元素滚动 | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334import Vue from &apos;vue&apos;// from: http://www.zhangxinxu.com/wordpress/2015/12/element-scroll-prevent-parent-element-scroll-js/function handleStop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="元素滚动时禁止父元素滚动">
+<meta property="og:url" content="https://shirleyhwj.github.io/2016/12/29/element-scroll-prevent-parent-element-scroll/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334import Vue from &apos;vue&apos;// from: http://www.zhangxinxu.com/wordpress/2015/12/element-scroll-prevent-parent-element-scroll-js/function handleStop">
+<meta property="og:updated_time" content="2017-09-12T12:02:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="元素滚动时禁止父元素滚动">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334import Vue from &apos;vue&apos;// from: http://www.zhangxinxu.com/wordpress/2015/12/element-scroll-prevent-parent-element-scroll-js/function handleStop">
+  
+    <link rel="alternative" href="/blog/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/blog">Home</a></li><li><a href="/blog/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/blog/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhwj.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-element-scroll-prevent-parent-element-scroll" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2016/12/29/element-scroll-prevent-parent-element-scroll/" class="article-date">
+  <time datetime="2016-12-29T12:01:59.000Z" itemprop="datePublished">2016-12-29</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      元素滚动时禁止父元素滚动
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"></div><div class="line"><span class="comment">// from: http://www.zhangxinxu.com/wordpress/2015/12/element-scroll-prevent-parent-element-scroll-js/</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleStopScroll</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> el = e.currentTarget</div><div class="line">  <span class="keyword">let</span> scrollTop = el.scrollTop</div><div class="line">  <span class="keyword">let</span> scrollHeight = el.scrollHeight</div><div class="line">  <span class="keyword">let</span> height = el.clientHeight</div><div class="line">  <span class="keyword">let</span> delta = (e.wheelDelta) ? e.wheelDelta : -(e.detail || <span class="number">0</span>)</div><div class="line">  <span class="built_in">console</span>.log(scrollTop, scrollHeight, height, delta)</div><div class="line"></div><div class="line">  <span class="comment">// delta &gt; 0 上滚</span></div><div class="line">  <span class="comment">// delta &lt; 0 下滚</span></div><div class="line">  <span class="keyword">if</span> ((delta &gt; <span class="number">0</span> &amp;&amp; scrollTop &lt;= delta) ||</div><div class="line">    (delta &lt; <span class="number">0</span> &amp;&amp; scrollHeight - height - scrollTop &lt;= <span class="number">-1</span> * delta)) &#123;</div><div class="line">    el.scrollTop = delta &gt; <span class="number">0</span> ? <span class="number">0</span> : scrollHeight</div><div class="line">    event.preventDefault()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> eventType = <span class="string">'mousewheel'</span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.document.mozHidden !== <span class="literal">undefined</span>) &#123;</div><div class="line">  eventType = <span class="string">'DOMMouseScroll'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">Vue.directive(<span class="string">'stop-scroll'</span>, &#123;</div><div class="line">  bind () &#123;</div><div class="line">    <span class="keyword">this</span>.el.addEventListener(eventType, handleStopScroll, <span class="literal">false</span>)</div><div class="line">  &#125;,</div><div class="line">  unbind () &#123;</div><div class="line">    <span class="keyword">this</span>.el.removeEventListener(eventType, handleStopScroll)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2017/01/20/vue实例方法-事件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue实例方法 / 事件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2016/11/22/css-垂直居中/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          css 垂直居中
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhwj.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2021 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+  </div>
+</body>
+</html>
