@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>无服务架构探索之路 | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="国外服务端渲染CDN+labmda+s3适用场景国内阿里云oss静态网站托管问题： 1、oss必须被设置成公共读，也就是除了www的域名，外部还能通过oss的域名访问到资源 2、更目录文件名设置必须带 .html，移动端首页命名为mobile 3、移动端页面需要在前端跳转，改lambda mobile逻辑，path带上mobile 4、图片中心和terra上传的文件无法同步到oss（目前是302到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无服务架构探索之路">
+<meta property="og:url" content="https://shirleyhwj.github.io/2019/10/21/无服务架构探索之路/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="国外服务端渲染CDN+labmda+s3适用场景国内阿里云oss静态网站托管问题： 1、oss必须被设置成公共读，也就是除了www的域名，外部还能通过oss的域名访问到资源 2、更目录文件名设置必须带 .html，移动端首页命名为mobile 3、移动端页面需要在前端跳转，改lambda mobile逻辑，path带上mobile 4、图片中心和terra上传的文件无法同步到oss（目前是302到">
+<meta property="og:updated_time" content="2021-05-26T03:31:44.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无服务架构探索之路">
+<meta name="twitter:description" content="国外服务端渲染CDN+labmda+s3适用场景国内阿里云oss静态网站托管问题： 1、oss必须被设置成公共读，也就是除了www的域名，外部还能通过oss的域名访问到资源 2、更目录文件名设置必须带 .html，移动端首页命名为mobile 3、移动端页面需要在前端跳转，改lambda mobile逻辑，path带上mobile 4、图片中心和terra上传的文件无法同步到oss（目前是302到">
+  
+    <link rel="alternative" href="/blog/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/blog">Home</a></li><li><a href="/blog/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/blog/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhwj.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-无服务架构探索之路" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2019/10/21/无服务架构探索之路/" class="article-date">
+  <time datetime="2019-10-21T13:07:49.000Z" itemprop="datePublished">2019-10-21</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      无服务架构探索之路
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h2><h3 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h3><h3 id="CDN-labmda-s3"><a href="#CDN-labmda-s3" class="headerlink" title="CDN+labmda+s3"></a>CDN+labmda+s3</h3><h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><h2 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h2><p>阿里云<strong>oss</strong>静态网站托管问题：</p>
+<p>1、oss必须被设置成公共读，也就是除了www的域名，外部还能通过oss的域名访问到资源</p>
+<p>2、更目录文件名设置必须带 .html，移动端首页命名为mobile</p>
+<p>3、移动端页面需要在前端跳转，改lambda mobile逻辑，path带上mobile</p>
+<p>4、图片中心和terra上传的文件无法同步到oss（目前是302到cloudfront，时间较长，无法接受）</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2021/03/28/Scheduler/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2018/10/21/redux原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          redux原理
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhwj.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2021 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ES6 Promise | 风になる</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Pending（进行中）、Resolved（已完成，又称Fulfilled）和Rejected（已失败） 如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个Promise实例，表示异步操作的结果有可能是一个值，也有可能是另一个异步操作 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 Promise">
+<meta property="og:url" content="https://shirleyhwj.github.io/2016/09/09/ES6-Promise/index.html">
+<meta property="og:site_name" content="风になる">
+<meta property="og:description" content="Pending（进行中）、Resolved（已完成，又称Fulfilled）和Rejected（已失败） 如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个Promise实例，表示异步操作的结果有可能是一个值，也有可能是另一个异步操作 1">
+<meta property="og:updated_time" content="2021-05-26T03:46:41.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 Promise">
+<meta name="twitter:description" content="Pending（进行中）、Resolved（已完成，又称Fulfilled）和Rejected（已失败） 如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个Promise实例，表示异步操作的结果有可能是一个值，也有可能是另一个异步操作 1">
+  
+    <link rel="alternative" href="/blog/atom.xml" title="风になる" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/blog">Home</a></li><li><a href="/blog/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/blog/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shirleyhwj.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-ES6-Promise" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/blog/2016/09/09/ES6-Promise/" class="article-date">
+  <time datetime="2016-09-09T03:48:18.000Z" itemprop="datePublished">2016-09-09</time>
+</a>
+		</span>
+		<span class="meta-elements author">Shirley Hu</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      ES6 Promise
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p><code>Pending</code>（进行中）、<code>Resolved</code>（已完成，又称Fulfilled）和<code>Rejected</code>（已失败）</p>
+<p>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个Promise实例，表示异步操作的结果有可能是一个值，也有可能是另一个异步操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail'</span>)), <span class="number">3000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(p1), <span class="number">1000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">p2</div><div class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> <span class="built_in">console</span>.log(result))</div><div class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error))</div><div class="line"><span class="comment">// Error: fail</span></div></pre></td></tr></table></figure>
+<h2 id="Promise-prototype-then（）Promise-prototype-catch（）"><a href="#Promise-prototype-then（）Promise-prototype-catch（）" class="headerlink" title="Promise.prototype.then（）Promise.prototype.catch（）"></a>Promise.prototype.then（）Promise.prototype.catch（）</h2><p>Promise实例具有then方法，也就是说，then方法是定义在原型对象Promise.prototype上的。它的作用是为Promise实例添加状态改变时的回调函数。前面说过，then方法的第一个参数是Resolved状态的回调函数，第二个参数（可选）是Rejected状态的回调函数。</p>
+<p>then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">p.then(<span class="function">(<span class="params">val</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"fulfilled:"</span>, val))</div><div class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"rejected:"</span>, err));</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">p.then(<span class="function">(<span class="params">val</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"fulfilled:"</span>, val))</div><div class="line">  .then(<span class="literal">null</span>, (err) =&gt; <span class="built_in">console</span>.log(<span class="string">"rejected:"</span>, err));</div></pre></td></tr></table></figure></p>
+<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.prototype.all = <span class="function"><span class="keyword">function</span>(<span class="params">promises</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> results = []</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, rejected</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;promises.length; i++) &#123;</div><div class="line">      promises[i].then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</div><div class="line">        results.push(res)</div><div class="line">        <span class="keyword">if</span> (i === promises.length <span class="number">-1</span>) &#123;</div><div class="line">          resolve(results)</div><div class="line">        &#125;</div><div class="line">      &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</div><div class="line">        reject(err)</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h2><h2 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a>Promise.resolve()</h2><p>有时需要将现有对象转为Promise对象，Promise.resolve方法就起到这个作用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(<span class="number">42</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject()"></a>Promise.reject()</h2><p>Promise.reject(reason)方法也会返回一个新的Promise实例，该实例的状态为rejected。它的参数用法与Promise.resolve方法完全一致。</p>
+<p>手写Promise的polyfill<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> PENDING = <span class="string">'pending'</span></div><div class="line"><span class="keyword">const</span> FULFILLED = <span class="string">'fulfilled'</span></div><div class="line"><span class="keyword">const</span> REJECTED = <span class="string">'rejected'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyPromise</span>(<span class="params">executor</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.state = PENDING;</div><div class="line">  <span class="keyword">this</span>.value = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">this</span>.reason = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">this</span>.onFulfilledCallbacks = [];</div><div class="line">  <span class="keyword">this</span>.onRejectedCallbacks = [];</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (self.state === PENDING) &#123;</div><div class="line">      self.state = FULFILLED;</div><div class="line">      self.value = value;</div><div class="line"></div><div class="line">      self.onFulfilledCallbacks.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">fulfilledCallback</span>) </span>&#123;</div><div class="line">        fulfilledCallback();</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>) </span>&#123;</div><div class="line">     <span class="keyword">if</span> (self.state === PENDING) &#123;</div><div class="line">      self.state = REJECTED;</div><div class="line">      self.reason = reason;</div><div class="line"></div><div class="line">      self.onRejectedCallbacks.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">rejectedCallback</span>) </span>&#123;</div><div class="line">        rejectedCallback();</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    executor(resolve, rejected);</div><div class="line">  &#125; <span class="keyword">catch</span> (reason) &#123;</div><div class="line">    reject(reason);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">MyPromise.prototype.then = <span class="function"><span class="keyword">function</span>(<span class="params">onResolve, onRejected</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (self.state === PENDING) &#123;</div><div class="line">    self.onFulfilledCallbacks.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        onFuifilled(self.value);</div><div class="line">    &#125;);</div><div class="line">    self.onRejectedCallbacks.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        onRejected(self.reason);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.state === FULFILLED) &#123;</div><div class="line">    onResolve(<span class="keyword">this</span>.value)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.state === REJECTED) &#123;</div><div class="line">    onRejected(<span class="keyword">this</span>.reason)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2016/09/18/NodeJs-的几种文件路径/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          NodeJs 的几种文件路径
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2016/09/05/Sublime-Text快捷键/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          Sublime Text快捷键
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:shirleyhwj.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/blog/">风になる</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2021 Shirley Hu<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+  </div>
+</body>
+</html>
